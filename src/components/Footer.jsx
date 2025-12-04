@@ -1,4 +1,5 @@
 import { Instagram, MapPin, Phone, Mail, YoutubeIcon } from "lucide-react";
+import Link from "next/link";
 
 export default function Footer() {
     return (
@@ -32,29 +33,29 @@ export default function Footer() {
                         </h5>
                         <ul className="space-y-2">
                             <li>
-                                <a href="/charities" className="text-gray-300 hover:text-orange-400 transition-colors">
+                                <Link href="/charities" className="text-gray-300 hover:text-orange-400 transition-colors">
                                     Charities
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="/ourteam" className="text-gray-300 hover:text-orange-400 transition-colors">
+                                <Link href="/ourteam" className="text-gray-300 hover:text-orange-400 transition-colors">
                                     Our Team
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="/eventaccess" className="text-gray-300 hover:text-orange-400 transition-colors">
+                                <Link href="/eventaccess" className="text-gray-300 hover:text-orange-400 transition-colors">
                                     Event Access
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="/media" className="text-gray-300 hover:text-orange-400 transition-colors">
+                                <Link href="/media" className="text-gray-300 hover:text-orange-400 transition-colors">
                                     Media
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="/#contactus" className="text-gray-300 hover:text-orange-400 transition-colors">
+                                <Link href="/#contactus" className="text-gray-300 hover:text-orange-400 transition-colors">
                                     Contact Us
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                     </div>
