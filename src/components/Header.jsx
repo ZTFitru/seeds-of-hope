@@ -1,5 +1,4 @@
 'use client'
-import Image from "next/image";
 import { useState } from "react";
 // import logoImg from 'public/images/seedsOfHopenobg.png'
 import { Menu, X } from "lucide-react";
@@ -33,10 +32,10 @@ export default function Header() {
                 <div className="flex justify-between items-center h-16">
                     {/* logo */}
                     <a href="/"> 
-                        <Image
+                        <img
                             src='/images/seedsOfHopenobg.png'
-                            width={50}
-                            height={50}
+                            width='50'
+                            height='50'
                             alt="Logo"
                             className="cursor-pointer"
                         />

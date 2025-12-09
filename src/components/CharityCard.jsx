@@ -1,4 +1,3 @@
-const { default: Image } = require("next/image");
 const { useState } = require("react");
 
 export default function CharityCard({ charity }) {
@@ -21,11 +20,10 @@ export default function CharityCard({ charity }) {
         <div className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col">
             
             <div className="h-48 relative">
-                <Image 
+                <img 
                     src={charity.image}
                     alt={charity.name}
-                    fill
-                    className="object-cover"
+                    className="object-cover w-full h-full"
                 />
             </div>
 

@@ -2,7 +2,6 @@
 
 import Footer from "@/components/Footer"
 import Header from "@/components/Header"
-import Image from "next/image"
 
 
 export default function OurTeam() {
@@ -44,11 +43,10 @@ export default function OurTeam() {
                         {hosts.map(host => (
                             <div key={host.id} className="grid grid-cols-1 sm:grid-cols-2 gap-10">
                                 <div className="w-full h-64 relative mb-4">
-                                    <Image
+                                    <img
                                         src={host.image}
                                         alt={host.name}
-                                        fill
-                                        className="object-cover rounded-lg"
+                                        className="object-cover rounded-lg w-full h-full"
                                     />
                                 </div>
                                 <h3 className="text-xl font-bold text-gray-900">
@@ -69,11 +67,10 @@ export default function OurTeam() {
                         {artists.map(artist => (
                             <div key={artist.id} className="bg-white p-6 rounded-lg shadow-lg text-center">
                                 <div className="w-full h-56 relative mb-4">
-                                    <Image
+                                    <img
                                         src={artist.image}
                                         alt={artist.name}
-                                        fill
-                                        className="object-cover rounded-lg"
+                                        className="object-cover rounded-lg w-full h-full"
                                     />
                                     {/* <h3 className="text-lg font-semibold text-gray-900">
                                         {artist.name}
@@ -97,11 +94,10 @@ export default function OurTeam() {
                         {partners.map(partner => (
                             <div key={partner.id} className="flex justify-center">
                                 <div className="w-40 h-24 relative grayscale hover:grayscale-0 transition duration-300">
-                                    <Image
+                                    <img
                                         src={partner.logo}
                                         alt="Production Team Logo"
-                                        fill
-                                        className="object-contain"
+                                        className="object-contain w-full h-full"
                                     />
                                 </div>
                             </div>
