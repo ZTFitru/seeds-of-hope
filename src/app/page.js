@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { ArrowRight, Heart, Target, User, Users } from "lucide-react";
+import { getLinkHref } from "@/utils/linkHelper";
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -51,14 +52,14 @@ export default function Home() {
                 </p>
                 <div className="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in">
                   <a 
-                    href='/charities'
+                    href={getLinkHref('/charities')}
                     className="bg-yellow-300 text-black px-8 py-3 rounded-lg font-semibold hover:bg-yellow-600 transition-colors inline-flex items-center justify-center"
                   >
                     Donate Now
                     <ArrowRight className="ml-2" size={20} />
                   </a>
                   <a 
-                    href='/eventaccess'
+                    href={getLinkHref('/eventaccess')}
                     className="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors inline-flex items-center justify-center"
                   >
                     Get Involved

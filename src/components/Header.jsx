@@ -2,6 +2,7 @@
 import { useState } from "react";
 // import logoImg from 'public/images/seedsOfHopenobg.png'
 import { Menu, X } from "lucide-react";
+import { getLinkHref } from "@/utils/linkHelper";
 
 export default function Header() {
     const [isOpen, setIsOpen] = useState(false)
@@ -50,7 +51,7 @@ export default function Header() {
                         {navItems.map((item)=> (
                             <a 
                                 key={item.name}
-                                href={item.href}
+                                href={getLinkHref(item.href)}
                                 onClick={(e)=> handleNavClick(e, item.href)}
                                 className="text-gray-700 hover:text-orange-600 px-3 py-2 text-sm font-medium transition-colors"
                             >
@@ -76,7 +77,7 @@ export default function Header() {
                         {navItems.map((item)=> (
                             <a
                                 key={item.name}
-                                href={item.href}
+                                href={getLinkHref(item.href)}
                                 onClick={(e)=> handleNavClick(e, item.href)}
                                 className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-orange-600 hover:bg-gray-50 rounded-md"
                             >  

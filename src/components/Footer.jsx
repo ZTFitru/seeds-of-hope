@@ -1,5 +1,5 @@
 import { Instagram, MapPin, Phone, Mail, YoutubeIcon } from "lucide-react";
-import Link from "next/link";
+import { getLinkHref } from "@/utils/linkHelper";
 
 export default function Footer() {
     return (
@@ -33,29 +33,29 @@ export default function Footer() {
                         </h5>
                         <ul className="space-y-2">
                             <li>
-                                <Link href="/charities" className="text-gray-300 hover:text-orange-400 transition-colors">
+                                <a href={getLinkHref("/charities")} className="text-gray-300 hover:text-orange-400 transition-colors">
                                     Charities
-                                </Link>
+                                </a>
                             </li>
                             <li>
-                                <Link href="/ourteam" className="text-gray-300 hover:text-orange-400 transition-colors">
+                                <a href={getLinkHref("/ourteam")} className="text-gray-300 hover:text-orange-400 transition-colors">
                                     Our Team
-                                </Link>
+                                </a>
                             </li>
                             <li>
-                                <Link href="/eventaccess" className="text-gray-300 hover:text-orange-400 transition-colors">
+                                <a href={getLinkHref("/eventaccess")} className="text-gray-300 hover:text-orange-400 transition-colors">
                                     Event Access
-                                </Link>
+                                </a>
                             </li>
                             <li>
-                                <Link href="/media" className="text-gray-300 hover:text-orange-400 transition-colors">
+                                <a href={getLinkHref("/media")} className="text-gray-300 hover:text-orange-400 transition-colors">
                                     Media
-                                </Link>
+                                </a>
                             </li>
                             <li>
-                                <Link href="/#contactus" className="text-gray-300 hover:text-orange-400 transition-colors">
+                                <a href={getLinkHref("/#contactus")} className="text-gray-300 hover:text-orange-400 transition-colors">
                                     Contact Us
-                                </Link>
+                                </a>
                             </li>
                         </ul>
                     </div>
