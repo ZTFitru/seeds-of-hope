@@ -31,16 +31,26 @@ export default function Home() {
       <Header />
 
       {/* hero section */}
-      <section className="relative h-[600px] overflow-hidden">
+      {/* <section className="relative h-[600px] overflow-hidden"> */}
+      <section className="relative h-[450px] md:h-[550px] overflow-hidden">
         {heroImages.map((slide, index)=> (
           <div
             key={index}
             className={`absolute inset-0 transition-opacity duration-1000 ${index === currentSlide ? 'opacity-100' : 'opacity-0'}`}
           >
             <div 
-              className="absolute inset-0 bg-cover bg-center bg-no-repeat" 
-              style={{backgroundImage: `url("${slide.image}")`}}
+              // className="absolute inset-0 bg-cover bg-center bg-no-repeat" 
+              // className="absolute inset-0 bg-contain bg-center bg-no-repeat" 
+              className="absolute inset-0 bg-white" 
+              // style={{backgroundImage: `url("${slide.image}")`}}
             >
+              <Image 
+                src={slide.image}
+                alt={slide.name}
+                fill
+                className="object-contain object-center"
+                priority
+              />
             </div>
             <div className="relative h-full flex items-center justify-center text-white">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -53,14 +63,16 @@ export default function Home() {
                 <div className="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in">
                   <a 
                     href={getLinkHref('/charities')}
-                    className="bg-yellow-300 text-black px-8 py-3 rounded-lg font-semibold hover:bg-yellow-600 transition-colors inline-flex items-center justify-center"
+                    className="bg-yellow-300 text-black px-4 py-2 md:px-8 md:py-3 rounded-lg 
+                    font-semibold hover:bg-yellow-600 transition-colors inline-flex items-center justify-center"
                   >
                     Donate Now
                     <ArrowRight className="ml-2" size={20} />
                   </a>
                   <a 
                     href={getLinkHref('/eventaccess')}
-                    className="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors inline-flex items-center justify-center"
+                    className="bg-white text-green-600 px-4 py-2 md:px-8 md:py-3 rounded-lg 
+                    font-semibold hover:bg-blue-50 transition-colors inline-flex items-center justify-center"
                   >
                     Get Involved
                   </a>
@@ -170,9 +182,9 @@ export default function Home() {
       <section id="contactus" className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Get In Touch
-            </h2>
+            </h3>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Have any questions or want to learn more about our work? We'd love to hear from you.
             </p>

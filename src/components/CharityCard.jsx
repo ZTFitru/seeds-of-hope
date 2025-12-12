@@ -28,7 +28,7 @@ export default function CharityCard({ charity }) {
             </div>
 
             <div className="p-6 flex-1 flex flex-col">
-                <h3 className="text-xl font-bold mb-4 text-gray-900">{charity.name}</h3>
+                <h2 className="text-xl font-bold mb-4 text-gray-900">{charity.name}</h2>
 
                 {/* donate button */}
                 <div className="flex gap-3 mb-4">
