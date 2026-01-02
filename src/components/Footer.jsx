@@ -1,4 +1,4 @@
-import { Instagram, MapPin, Phone, Mail, YoutubeIcon } from "lucide-react";
+import { Instagram, MapPin, Phone, Mail, YoutubeIcon, Facebook } from "lucide-react";
 import { getLinkHref } from "@/utils/linkHelper";
 
 export default function Footer() {
@@ -12,13 +12,16 @@ export default function Footer() {
                             Seeds of Hope
                         </h4>
                         <p className="text-gray-300 mb-4">
-                            We unite the power of diverse charities and causes under one purpose-driven mission: 
+                            We unite the power of strategic charities and causes under one purpose-driven mission: 
                             to accelerate communities by nourishing hope, dignity, and resilience in the face of 
                             crisis through collaborative fundraising, awareness, and action.
                         </p>
                         <div className="flex space-x-4">
                             <a href="#" className="text-gray-300 hover:text-orange-400 transition-colors">
                                 <Instagram size={20} />
+                            </a>
+                            <a href="#" target="_blank" className="text-gray-300 hover:text-orange-400 transition-colors">
+                                <Facebook size={20} />
                             </a>
                             <a href="#" className="text-gray-300 hover:text-orange-400 transition-colors">
                                 <YoutubeIcon size={20} />

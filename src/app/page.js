@@ -1,19 +1,18 @@
 'use client'
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { ArrowRight, Heart, Target, User, Users } from "lucide-react";
 import { getLinkHref } from "@/utils/linkHelper";
 
+const heroImages = [
+  {id: 1, name: '', sub: '', image: '/images/seedsOfHopePlaceholder.jpg'},
+  {id: 2, name: 'Sourced Locally', sub: 'We\'re a local nonprofit that aims to end needless suffering', image: 'https://content.civicplus.com/api/assets/ade7d03d-cda3-4dfd-9ce9-b5cd347a8513?cache=1800&width=924&mode=min'},
+  {id: 3, name: 'Event Details', sub: 'Bookmark this site to stay up to date on the latest changes', image: '/images/audience.jpg'}
+]
+
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0)
-
-  const heroImages = [
-    {id: 1, name: 'Image 1', sub: 'something informative', image: '/images/seedsOfHopePlaceholder.jpg'},
-    {id: 2, name: 'Image 2', sub: 'something informative', image: '/images/seedsOfHopePlaceholder.jpg'},
-    {id: 3, name: 'Image 3', sub: 'something informative', image: '/images/audience.jpg'}
-]
 
   useEffect(()=> {
     const timer = setInterval(()=> {
@@ -42,6 +41,7 @@ export default function Home() {
               style={{backgroundImage: `url("${slide.image}")`}}
             >
             </div>
+            <div className="absolute inset-0 bg-black opacity-35"></div>
             <div className="relative h-full flex items-center justify-center text-white">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fade-in">
@@ -50,21 +50,23 @@ export default function Home() {
                 <p className="text-xl md:text-2xl mb-8 text-gray-100 animate-fade-in">
                   {slide.sub}
                 </p>
-                <div className="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in">
-                  <a 
-                    href={getLinkHref('/charities')}
-                    className="bg-yellow-300 text-black px-8 py-3 rounded-lg font-semibold hover:bg-yellow-600 transition-colors inline-flex items-center justify-center"
-                  >
-                    Donate Now
-                    <ArrowRight className="ml-2" size={20} />
-                  </a>
-                  <a 
-                    href={getLinkHref('/eventaccess')}
-                    className="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors inline-flex items-center justify-center"
-                  >
-                    Get Involved
-                  </a>
-                </div>
+                {index !== 0 && (
+                  <div className="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in">
+                    <a 
+                      href={getLinkHref('/charities')}
+                      className="bg-yellow-300 text-black px-8 py-3 rounded-lg font-semibold hover:bg-yellow-600 transition-colors inline-flex items-center justify-center"
+                    >
+                      Donate Now
+                      <ArrowRight className="ml-2" size={20} />
+                    </a>
+                    <a 
+                      href={getLinkHref('/eventaccess')}
+                      className="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors inline-flex items-center justify-center"
+                    >
+                      Get Involved
+                    </a>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -92,7 +94,7 @@ export default function Home() {
             </h2>
             <p className="text-lg text-gray-700">
               {/* change diverse to  */}
-              We unite the power of diverse charities and causes under one purpose-driven mission:  to accelerate communities by nourishing hope, 
+              We unite the power of strategic charities and causes under one purpose-driven mission:  to accelerate communities by nourishing hope, 
               dignity, and resilience in the face of crisis through collaborative fundraising, awareness, and action.
             </p>
           </div>
@@ -148,15 +150,15 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div>
-              <div className="text-5xl font-bold mb-2">10,000+</div>
+              <div className="text-5xl font-bold mb-2">0</div>
               <div className="text-xl text-black">People Helped</div>
             </div>
             <div>
-              <div className="text-5xl font-bold mb-2">50+</div>
+              <div className="text-5xl font-bold mb-2">0</div>
               <div className="text-xl text-black">Programs Running</div>
             </div>
             <div>
-              <div className="text-5xl font-bold mb-2">500+</div>
+              <div className="text-5xl font-bold mb-2">0</div>
               <div className="text-xl text-black">Active Volunteers</div>
             </div>
           </div>
@@ -174,7 +176,7 @@ export default function Home() {
               Get In Touch
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Have any questions or want to learn more about our work? We'd love to hear from you.
+              Have any questions or want to learn more about our work? We&apos;d love to hear from you.
             </p>
           </div>
 

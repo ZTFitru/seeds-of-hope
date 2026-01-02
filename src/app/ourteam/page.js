@@ -19,10 +19,10 @@ export default function OurTeam() {
     ]
 
     const partners = [
-        {id: 1, logo: '/images/logo-example.png'},
-        {id: 2, logo: '/images/logo-example.png'},
-        {id: 3, logo: '/images/logo-example.png'},
-        {id: 4, logo: '/images/logo-example.png'},
+        {id: 1, logo: '/images/IconOnly_Transparent_NoBuffer.png'},
+        {id: 2, logo: '/images/IconOnly_Transparent_NoBuffer.png'},
+        {id: 3, logo: '/images/IconOnly_Transparent_NoBuffer.png'},
+        {id: 4, logo: '/images/IconOnly_Transparent_NoBuffer.png'},
     ]
 
     return (
@@ -35,7 +35,7 @@ export default function OurTeam() {
                 </h1>
 
                 {/* host */}
-                <section className="mb-20">
+                {/* <section className="mb-20">
                     <h2 className="text-3xl font-semibold text-gray-900 mb-8 text-center">
                         Hosts
                     </h2>
@@ -55,10 +55,10 @@ export default function OurTeam() {
                             </div>
                         ))}
                     </div>
-                </section>
+                </section> */}
 
                 {/* artists */}
-                <section className="mb-20">
+                {/* <section className="mb-20">
                     <h2 className="text-3xl font-semibold text-gray-900 mb-8 text-center">
                         Featured Artists
                     </h2>
@@ -72,9 +72,9 @@ export default function OurTeam() {
                                         alt={artist.name}
                                         className="object-cover rounded-lg w-full h-full"
                                     />
-                                    {/* <h3 className="text-lg font-semibold text-gray-900">
+                                    <h3 className="text-lg font-semibold text-gray-900">
                                         {artist.name}
-                                    </h3> */}
+                                    </h3>
                                 </div>
                                 <h3 className="text-lg font-semibold text-gray-900">
                                         {artist.name}
@@ -82,7 +82,7 @@ export default function OurTeam() {
                             </div>
                         ))}
                     </div>
-                </section>
+                </section> */}
 
                 {/* logo */}
                 <section className="mb-20">
