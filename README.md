@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Seeds of Hope
 
-## Getting Started
+Full-stack application for Seeds of Hope charity organization.
 
-First, run the development server:
+## Project Structure
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+seeds-of-hope/
+├── frontend/          # Next.js frontend application
+├── backend/           # Node.js/Express backend API
+└── package.json       # Root package.json for running both
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Quick Start
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Install Dependencies
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Install all dependencies (root, frontend, and backend):
+```bash
+npm run install:all
+```
 
-## Learn More
+Or install individually:
+```bash
+# Root dependencies
+npm install
 
-To learn more about Next.js, take a look at the following resources:
+# Frontend dependencies
+cd frontend && npm install
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Backend dependencies
+cd backend && npm install
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Run Development Servers
 
-## Deploy on Vercel
+Run both frontend and backend simultaneously:
+```bash
+npm run dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This will start:
+- **Backend**: http://localhost:5000
+- **Frontend**: http://localhost:3000
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Run Individual Servers
+
+```bash
+# Frontend only
+npm run dev:frontend
+
+# Backend only
+npm run dev:backend
+```
+
+## Backend Setup
+
+Before running the backend, make sure to:
+
+1. Copy the environment file:
+   ```bash
+   cd backend
+   cp .env.example .env
+   ```
+
+2. Configure your email settings in `backend/.env`:
+   - SMTP credentials
+   - Email addresses
+   - See `backend/README.md` for detailed instructions
+
+## Frontend Setup
+
+The frontend is a Next.js application. No additional setup required beyond installing dependencies.
+
+## Technologies
+
+- **Frontend**: Next.js, React, Tailwind CSS
+- **Backend**: Node.js, Express, Nodemailer
+- **Email**: SMTP via Nodemailer
+
+## License
+
+ISC

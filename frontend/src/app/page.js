@@ -8,12 +8,22 @@ import { getLinkHref } from "@/utils/linkHelper";
 
 const heroImages = [
   {id: 1, name: '', sub: '', image: '/images/seedsOfHopePlaceholder.jpg'},
-  {id: 2, name: 'Sourced Locally', sub: 'We\'re a local nonprofit that aims to end needless suffering', image: 'https://content.civicplus.com/api/assets/ade7d03d-cda3-4dfd-9ce9-b5cd347a8513?cache=1800&width=924&mode=min'},
+  {id: 2, name: 'Sourced Locally', sub: 'We\'re a local nonprofit that aims to end needless suffering', image: '/images/polina-rytova-1dGMs4hhcVA-unsplash.jpg'},
   {id: 3, name: 'Event Details', sub: 'Bookmark this site to stay up to date on the latest changes', image: '/images/audience.jpg'}
 ]
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0)
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  })
+  const [formStatus, setFormStatus] = useState({
+    loading: false,
+    success: false,
+    error: null
+  })
 
   useEffect(()=> {
     const timer = setInterval(()=> {
@@ -24,6 +34,57 @@ export default function Home() {
 
   const goToSlide = (index)=> {
     setCurrentSlide(index)
+  }
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }))
+    // Clear error when user starts typing
+    if (formStatus.error) {
+      setFormStatus(prev => ({ ...prev, error: null }))
+    }
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setFormStatus({ loading: true, success: false, error: null })
+
+    try {
+      const response = await fetch('http://localhost:5000/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (response.ok && data.success) {
+        setFormStatus({ loading: false, success: true, error: null })
+        setFormData({ name: '', email: '', message: '' })
+        // Clear success message after 5 seconds
+        setTimeout(() => {
+          setFormStatus(prev => ({ ...prev, success: false }))
+        }, 5000)
+      } else {
+        setFormStatus({
+          loading: false,
+          success: false,
+          error: data.message || 'Failed to send message. Please try again.'
+        })
+      }
+    } catch (error) {
+      console.error('Contact form error:', error)
+      setFormStatus({
+        loading: false,
+        success: false,
+        error: 'Network error. Please check if the backend server is running.'
+      })
+    }
   }
 
   return (
@@ -41,14 +102,14 @@ export default function Home() {
             <div 
               // className="absolute inset-0 bg-cover bg-center bg-no-repeat" 
               // className="absolute inset-0 bg-contain bg-center bg-no-repeat" 
-              className="absolute inset-0 bg-white" 
-              // style={{backgroundImage: `url("${slide.image}")`}}
+              className="absolute inset-0"
+              style={{backgroundColor: '#6f876f'}}
             >
               <Image 
                 src={slide.image}
                 alt={slide.name}
                 fill
-                className="object-contain object-center"
+                className={index === 0 ? "object-contain object-center" : "object-cover object-center"}
                 priority
               />
             </div>
@@ -197,7 +258,21 @@ export default function Home() {
 
             {/* form */}
             <div className="bg-gray-50 p-8 rounded-lg">
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={handleSubmit}>
+                {/* Success Message */}
+                {formStatus.success && (
+                  <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg">
+                    Your message has been sent successfully! We will get back to you soon.
+                  </div>
+                )}
+
+                {/* Error Message */}
+                {formStatus.error && (
+                  <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg">
+                    {formStatus.error}
+                  </div>
+                )}
+
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                     Full Name *
@@ -206,8 +281,11 @@ export default function Home() {
                     type="text"
                     id="name"
                     name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent text-black"
+                    disabled={formStatus.loading}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent text-black disabled:bg-gray-200 disabled:cursor-not-allowed"
                     placeholder="John Smith"
                   />
                 </div>
@@ -220,8 +298,11 @@ export default function Home() {
                     type="email"
                     id="email"
                     name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
                     required
-                    className="w-full px-4 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent text-black"
+                    disabled={formStatus.loading}
+                    className="w-full px-4 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent text-black disabled:bg-gray-200 disabled:cursor-not-allowed"
                     placeholder="johnsmith@example.com"
                   />
                 </div>
@@ -233,18 +314,22 @@ export default function Home() {
                   <textarea
                     id="message"
                     name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
                     required
                     rows="5"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent text-black"
+                    disabled={formStatus.loading}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent text-black disabled:bg-gray-200 disabled:cursor-not-allowed"
                     placeholder="Tell us more...."
                   ></textarea>
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors cursor-pointer"
+                  disabled={formStatus.loading}
+                  className="w-full bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors cursor-pointer disabled:bg-gray-400 disabled:cursor-not-allowed"
                 >
-                  Send Message
+                  {formStatus.loading ? 'Sending...' : 'Send Message'}
                 </button>
               </form>
             </div>
