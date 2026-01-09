@@ -1,0 +1,19 @@
+# cPanel Node.js configuration with Passenger
+# NOTE: Update the paths below with your actual cPanel username and Node.js path
+# You can find your Node.js path in cPanel -> Setup Node.js App
+
+# Enable Passenger for Node.js
+PassengerEnabled On
+PassengerAppRoot /home/YOUR_USERNAME/public_html
+PassengerAppType node
+PassengerStartupFile passenger_wsgi.js
+# Update the Node.js path below - common paths:
+# /home/YOUR_USERNAME/nodevenv/public_html/VERSION/bin/node
+# Or find it in: cPanel -> Setup Node.js App -> Node.js version path
+PassengerNodejs /home/YOUR_USERNAME/nodevenv/public_html/18/bin/node
+
+# Alternative: If your cPanel uses a different startup file, try:
+# PassengerStartupFile app.js
+
+# If Passenger is not configured, you may need to set up Node.js app through cPanel interface instead
+# Go to: cPanel -> Setup Node.js App and configure there

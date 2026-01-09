@@ -36,9 +36,45 @@ app.use((err, req, res, next) => {
   });
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || process.env.PORT_NUMBER || 3000;
 
-app.listen(PORT, () => {
+// Handle cPanel/Passenger environment
+// In cPanel with Passenger, the port is automatically assigned
+const server = app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server is running on port ${PORT}`);
   console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+  console.log(`Process PID: ${process.pid}`);
+});
+
+// Enhanced error handling for server startup
+server.on('error', (error) => {
+  if (error.code === 'EADDRINUSE') {
+    console.error(`Port ${PORT} is already in use. Please choose a different port.`);
+    console.error('Set PORT environment variable to a different value.');
+    process.exit(1);
+  } else if (error.code === 'EACCES') {
+    console.error(`Permission denied to use port ${PORT}.`);
+    console.error('Try using a port number above 1024.');
+    process.exit(1);
+  } else {
+    console.error('Server error:', error);
+    process.exit(1);
+  }
+});
+
+// Graceful shutdown
+process.on('SIGTERM', () => {
+  console.log('SIGTERM signal received: closing HTTP server');
+  server.close(() => {
+    console.log('HTTP server closed');
+    process.exit(0);
+  });
+});
+
+process.on('SIGINT', () => {
+  console.log('SIGINT signal received: closing HTTP server');
+  server.close(() => {
+    console.log('HTTP server closed');
+    process.exit(0);
+  });
 });
