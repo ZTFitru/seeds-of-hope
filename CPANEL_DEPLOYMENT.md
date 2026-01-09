@@ -1,5 +1,9 @@
 # cPanel Deployment Guide for Seeds of Hope
 
+> **⚠️ This is the legacy deployment guide. For the most up-to-date and comprehensive guide, see [CPANEL_DEPLOYMENT_GUIDE.md](./CPANEL_DEPLOYMENT_GUIDE.md)**
+>
+> **For a quick start, see [QUICK_DEPLOY.md](./QUICK_DEPLOY.md)**
+
 This guide will help you deploy your Node.js application to cPanel.
 
 ## Common Issues and Solutions

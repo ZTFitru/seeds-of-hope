@@ -13,18 +13,21 @@
  * @returns {string} The base URL for the backend API
  */
 export function getApiBaseUrl() {
-  // In production, use the production API URL from environment variable
-  // Falls back to relative path /backend if not set (for same-domain deployment)
+  // Priority 1: Use explicit API URL from environment variable (if set)
+  // This can be a full URL like https://seedsofhopesc.org/backend
+  // or a relative path like /backend
   if (process.env.NEXT_PUBLIC_API_URL) {
-    return process.env.NEXT_PUBLIC_API_URL;
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL.trim();
+    // Remove trailing slash if present
+    return apiUrl.endsWith('/') ? apiUrl.slice(0, -1) : apiUrl;
   }
   
-  // In development, use localhost
-  if (process.env.NODE_ENV === 'development') {
-    return process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+  // Priority 2: In development, use localhost
+  if (typeof window === 'undefined' && process.env.NODE_ENV === 'development') {
+    return 'http://localhost:5000';
   }
   
-  // For production builds without explicit URL, use relative path
+  // Priority 3: For production builds without explicit URL, use relative path
   // This assumes the backend is served from /backend on the same domain
   return '/backend';
 }

@@ -36,12 +36,22 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Health check endpoint
+// Support both /health and /backend/health for flexibility
 app.get('/health', (req, res) => {
-  res.json({ status: 'ok', message: 'Server is running' });
+  res.json({ status: 'ok', message: 'Server is running', timestamp: new Date().toISOString() });
+});
+app.get('/backend/health', (req, res) => {
+  res.json({ status: 'ok', message: 'Server is running', timestamp: new Date().toISOString() });
 });
 
 // API Routes
+// Support both /api/contact and /backend/api/contact
+// This handles different routing scenarios:
+// 1. Direct Node.js server: /api/contact
+// 2. Passenger with full path: /backend/api/contact
+// 3. Passenger with stripped path: /api/contact (handled by first route)
 app.use('/api/contact', contactRoutes);
+app.use('/backend/api/contact', contactRoutes);
 
 // 404 handler
 app.use((req, res) => {

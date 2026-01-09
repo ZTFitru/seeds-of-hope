@@ -1,19 +1,119 @@
-# cPanel Node.js configuration with Passenger
-# NOTE: Update the paths below with your actual cPanel username and Node.js path
-# You can find your Node.js path in cPanel -> Setup Node.js App
+# ============================================
+# Seeds of Hope - cPanel Deployment Configuration
+# ============================================
+# This file handles routing for both frontend (Next.js static) and backend (Node.js API)
+# Place this file in your public_html directory
 
-# Enable Passenger for Node.js
-PassengerEnabled On
-PassengerAppRoot /home/YOUR_USERNAME/public_html
-PassengerAppType node
-PassengerStartupFile passenger_wsgi.js
-# Update the Node.js path below - common paths:
-# /home/YOUR_USERNAME/nodevenv/public_html/VERSION/bin/node
-# Or find it in: cPanel -> Setup Node.js App -> Node.js version path
-PassengerNodejs /home/YOUR_USERNAME/nodevenv/public_html/18/bin/node
+# Enable mod_rewrite
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  
+  # ============================================
+  # Backend API Routing (Node.js/Passenger)
+  # ============================================
+  # Route all /backend/* requests to Passenger/Node.js
+  # This assumes Passenger is configured to handle the Node.js app
+  RewriteCond %{REQUEST_URI} ^/backend
+  RewriteRule ^backend/(.*)$ - [L]
+  
+  # If not using Passenger, uncomment below to proxy to Node.js server
+  # RewriteCond %{REQUEST_URI} ^/backend
+  # RewriteRule ^backend/(.*)$ http://localhost:3000/$1 [P,L]
+  
+  # ============================================
+  # Frontend Static Files (Next.js Export)
+  # ============================================
+  # Skip rewriting if file or directory exists
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  
+  # Skip rewriting for backend API calls
+  RewriteCond %{REQUEST_URI} !^/backend
+  
+  # Skip rewriting for actual files (images, CSS, JS, etc.)
+  RewriteCond %{REQUEST_URI} !\.(html|css|js|jpg|jpeg|png|gif|ico|svg|woff|woff2|ttf|eot|json|xml|txt)$
+  
+  # Add .html extension for clean URLs (Next.js static export)
+  RewriteRule ^(.*)$ $1.html [L]
+  
+  # Handle root and index
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_URI} ^/$
+  RewriteRule ^$ /index.html [L]
+</IfModule>
 
-# Alternative: If your cPanel uses a different startup file, try:
-# PassengerStartupFile app.js
+# ============================================
+# Passenger Configuration (Node.js)
+# ============================================
+# Uncomment and configure these if using Passenger
+# Update paths with your actual cPanel username and Node.js version
+<IfModule mod_passenger.c>
+  PassengerEnabled On
+  PassengerAppRoot /home/YOUR_USERNAME/public_html
+  PassengerAppType node
+  PassengerStartupFile passenger_wsgi.js
+  # Find your Node.js path in: cPanel -> Setup Node.js App
+  # Common path format: /home/YOUR_USERNAME/nodevenv/public_html/VERSION/bin/node
+  PassengerNodejs /home/YOUR_USERNAME/nodevenv/public_html/18/bin/node
+</IfModule>
 
-# If Passenger is not configured, you may need to set up Node.js app through cPanel interface instead
-# Go to: cPanel -> Setup Node.js App and configure there
+# ============================================
+# Security Headers
+# ============================================
+<IfModule mod_headers.c>
+  # Prevent clickjacking
+  Header set X-Frame-Options "SAMEORIGIN"
+  
+  # XSS Protection
+  Header set X-XSS-Protection "1; mode=block"
+  
+  # Content Type Options
+  Header set X-Content-Type-Options "nosniff"
+  
+  # Referrer Policy
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# ============================================
+# Caching for Static Assets
+# ============================================
+<IfModule mod_expires.c>
+  ExpiresActive On
+  
+  # Images
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  
+  # CSS and JavaScript
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType text/javascript "access plus 1 month"
+  
+  # Fonts
+  ExpiresByType font/woff "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType application/font-woff "access plus 1 year"
+  ExpiresByType application/font-woff2 "access plus 1 year"
+</IfModule>
+
+# ============================================
+# Compression
+# ============================================
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
+
+# ============================================
+# Directory Browsing
+# ============================================
+Options -Indexes
+
+# ============================================
+# Error Pages (Optional)
+# ============================================
+# ErrorDocument 404 /404.html
+# ErrorDocument 500 /500.html
