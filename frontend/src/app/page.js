@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { ArrowRight, Heart, Target, User, Users } from "lucide-react";
 import { getLinkHref } from "@/utils/linkHelper";
+import { getApiUrl } from "@/utils/apiConfig";
 
 const heroImages = [
   {id: 1, name: '', sub: '', image: '/images/seedsOfHopePlaceholder.jpg'},
@@ -53,7 +54,7 @@ export default function Home() {
     setFormStatus({ loading: true, success: false, error: null })
 
     try {
-      const response = await fetch('http://localhost:5000/api/contact', {
+      const response = await fetch(getApiUrl('/api/contact'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
