@@ -3,8 +3,33 @@ const cors = require('cors');
 require('dotenv').config();
 
 const contactRoutes = require('./routes/contact');
+const { sequelize, testConnection, syncDatabase } = require('./config/database');
+const models = require('./models');
 
 const app = express();
+
+// Initialize database connection
+(async () => {
+  try {
+    console.log('Initializing database connection...');
+    const connected = await testConnection();
+    if (connected) {
+      // Optionally sync database on startup (only if DB_AUTO_SYNC is enabled)
+      // This is disabled by default - use initDatabase.js script instead
+      if (process.env.DB_AUTO_SYNC === 'true') {
+        console.log('Auto-sync enabled. Synchronizing database schema...');
+        await syncDatabase(false); // Don't force (don't drop existing tables)
+      }
+      console.log('Database ready.');
+    } else {
+      console.warn('Database connection failed, but server will continue to start.');
+      console.warn('Some features may not work until database is connected.');
+    }
+  } catch (error) {
+    console.error('Database initialization error:', error.message);
+    console.warn('Server will continue to start, but database features may be unavailable.');
+  }
+})();
 
 // Middleware
 // CORS configuration - supports both development and production
@@ -94,18 +119,19 @@ server.on('error', (error) => {
 });
 
 // Graceful shutdown
-process.on('SIGTERM', () => {
-  console.log('SIGTERM signal received: closing HTTP server');
-  server.close(() => {
+const gracefulShutdown = async (signal) => {
+  console.log(`${signal} signal received: closing HTTP server`);
+  server.close(async () => {
     console.log('HTTP server closed');
+    try {
+      await sequelize.close();
+      console.log('Database connection closed');
+    } catch (error) {
+      console.error('Error closing database connection:', error);
+    }
     process.exit(0);
   });
-});
+};
 
-process.on('SIGINT', () => {
-  console.log('SIGINT signal received: closing HTTP server');
-  server.close(() => {
-    console.log('HTTP server closed');
-    process.exit(0);
-  });
-});
+process.on('SIGTERM', () => gracefulShutdown('SIGTERM'));
+process.on('SIGINT', () => gracefulShutdown('SIGINT'));
