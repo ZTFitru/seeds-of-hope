@@ -1,0 +1,248 @@
+'use client'
+
+import { useState } from "react";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import { getApiUrl } from "@/utils/apiConfig";
+
+export default function Donation() {
+    const [selectedAmount, setSelectedAmount] = useState(null);
+    const [otherAmount, setOtherAmount] = useState('');
+    const [donorInfo, setDonorInfo] = useState({
+        name: '',
+        email: ''
+    });
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState(null);
+
+    const presetAmounts = [1, 2.50, 5];
+
+    const handleAmountSelect = (amount) => {
+        setSelectedAmount(amount);
+        setOtherAmount('');
+        setError(null);
+    };
+
+    const handleOtherAmountChange = (e) => {
+        const value = e.target.value;
+        setOtherAmount(value);
+        if (value) {
+            setSelectedAmount('other');
+        }
+        setError(null);
+    };
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setDonorInfo(prev => ({
+            ...prev,
+            [name]: value
+        }));
+        setError(null);
+    };
+
+    const validateForm = () => {
+        if (!donorInfo.email) {
+            setError('Please enter your email address');
+            return false;
+        }
+        if (!donorInfo.email.includes('@')) {
+            setError('Please enter a valid email address');
+            return false;
+        }
+        if (selectedAmount === null) {
+            setError('Please select a donation amount');
+            return false;
+        }
+        if (selectedAmount === 'other' && (!otherAmount || Number(otherAmount) <= 0)) {
+            setError('Please enter a valid donation amount');
+            return false;
+        }
+        return true;
+    };
+
+    const handleDonate = async () => {
+        setError(null);
+        
+        if (!validateForm()) {
+            return;
+        }
+
+        setIsLoading(true);
+
+        try {
+            const amount = selectedAmount === 'other' ? parseFloat(otherAmount) : selectedAmount;
+            
+            // Create donation order via backend API
+            const response = await fetch(getApiUrl('/api/donations/create'), {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    amount: amount,
+                    email: donorInfo.email,
+                    name: donorInfo.name || null,
+                    isAnonymous: !donorInfo.name,
+                    donationType: 'one-time'
+                })
+            });
+
+            const data = await response.json();
+
+            if (!response.ok || !data.success) {
+                throw new Error(data.message || 'Failed to create donation order');
+            }
+
+            // Redirect to PayPal approval URL
+            if (data.approvalUrl) {
+                window.location.href = data.approvalUrl;
+            } else {
+                throw new Error('No PayPal approval URL received');
+            }
+        } catch (err) {
+            console.error('Donation error:', err);
+            setError(err.message || 'An error occurred. Please try again.');
+            setIsLoading(false);
+        }
+    };
+
+    const isDonateDisabled = 
+        isLoading ||
+        selectedAmount === null ||
+        (selectedAmount === 'other' && (!otherAmount || Number(otherAmount) <= 0)) ||
+        !donorInfo.email;
+
+    return (
+        <div className="min-h-screen bg-gray-50">
+            <Header />
+            <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <div className="bg-white rounded-lg shadow-lg p-8">
+                    <h1 className="text-4xl font-bold text-gray-900 mb-2 text-center">
+                        Make a Donation
+                    </h1>
+                    <p className="text-gray-600 text-center mb-8">
+                        Your contribution helps us make a difference. Thank you for your support!
+                    </p>
+
+                    {/* Error message */}
+                    {error && (
+                        <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+                            <p className="text-red-800 text-sm">{error}</p>
+                        </div>
+                    )}
+
+                    {/* Donation amount selection */}
+                    <div className="mb-6">
+                        <label className="block text-sm font-semibold text-gray-700 mb-3">
+                            Select Donation Amount
+                        </label>
+                        <div className="grid grid-cols-3 gap-3 mb-4">
+                            {presetAmounts.map(amount => (
+                                <button
+                                    key={amount}
+                                    onClick={() => handleAmountSelect(amount)}
+                                    disabled={isLoading}
+                                    className={`px-4 py-3 rounded-lg border-2 font-semibold transition-all
+                                        ${selectedAmount === amount
+                                            ? 'bg-green-600 text-white border-green-600'
+                                            : 'border-gray-300 text-gray-700 hover:border-green-500 hover:bg-green-50'
+                                        }
+                                        ${isLoading ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
+                                    `}
+                                >
+                                    ${amount.toFixed(amount % 1 !== 0 ? 2 : 0)}
+                                </button>
+                            ))}
+                        </div>
+
+                        {/* Other amount option */}
+                        <button
+                            onClick={() => {
+                                setSelectedAmount('other');
+                                setOtherAmount('');
+                            }}
+                            disabled={isLoading}
+                            className={`w-full px-4 py-3 rounded-lg border-2 font-semibold transition-all mb-4
+                                ${selectedAmount === 'other'
+                                    ? 'bg-green-600 text-white border-green-600'
+                                    : 'border-gray-300 text-gray-700 hover:border-green-500 hover:bg-green-50'
+                                }
+                                ${isLoading ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
+                            `}
+                        >
+                            Other Amount
+                        </button>
+
+                        {/* Other amount input */}
+                        {selectedAmount === 'other' && (
+                            <div className="relative">
+                                <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 font-semibold">
+                                    $
+                                </span>
+                                <input
+                                    type="number"
+                                    min="0.01"
+                                    step="0.01"
+                                    value={otherAmount}
+                                    onChange={handleOtherAmountChange}
+                                    placeholder="Enter amount"
+                                    disabled={isLoading}
+                                    className="w-full pl-8 pr-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-black"
+                                />
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Donor information */}
+                    <div className="mb-6">
+                        <label className="block text-sm font-semibold text-gray-700 mb-3">
+                            Your Information
+                        </label>
+                        <input
+                            type="email"
+                            name="email"
+                            value={donorInfo.email}
+                            onChange={handleInputChange}
+                            placeholder="Email address *"
+                            required
+                            disabled={isLoading}
+                            className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg mb-4 focus:ring-2 focus:ring-green-500 focus:border-green-500 text-black"
+                        />
+                        <input
+                            type="text"
+                            name="name"
+                            value={donorInfo.name}
+                            onChange={handleInputChange}
+                            placeholder="Name (optional)"
+                            disabled={isLoading}
+                            className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-black"
+                        />
+                        <p className="text-xs text-gray-500 mt-2">
+                            If you leave your name blank, your donation will be anonymous.
+                        </p>
+                    </div>
+
+                    {/* Donate button */}
+                    <button
+                        onClick={handleDonate}
+                        disabled={isDonateDisabled}
+                        className={`w-full px-6 py-4 rounded-lg font-semibold text-lg transition-colors
+                            ${isDonateDisabled
+                                ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                                : 'bg-green-600 text-white hover:bg-green-700'
+                            }
+                        `}
+                    >
+                        {isLoading ? 'Processing...' : 'Continue to PayPal'}
+                    </button>
+
+                    <p className="text-xs text-gray-500 text-center mt-4">
+                        You will be redirected to PayPal to complete your secure payment.
+                    </p>
+                </div>
+            </div>
+            <Footer />
+        </div>
+    );
+}
