@@ -15,11 +15,11 @@ const Donation = sequelize.define('Donation', {
   },
   email: {
     type: DataTypes.STRING(255),
-    allowNull: false,
+    allowNull: true,
     validate: {
       isEmail: true
     },
-    comment: 'Donor email address for receipt and communication'
+    comment: 'Donor email address for receipt and communication (optional, PayPal email used if not provided)'
   },
   // Optional user connection (if donor is registered user)
   userId: {

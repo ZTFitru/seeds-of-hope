@@ -10,9 +10,10 @@ const donationValidation = [
     .isFloat({ min: 0.01 })
     .withMessage('Amount must be at least $0.01'),
   body('email')
+    .optional({ checkFalsy: true })
     .isEmail()
     .normalizeEmail()
-    .withMessage('Valid email is required'),
+    .withMessage('If provided, email must be valid'),
   body('name')
     .optional()
     .trim()
@@ -22,6 +23,10 @@ const donationValidation = [
     .optional()
     .isBoolean()
     .withMessage('isAnonymous must be a boolean'),
+  body('requestTaxReceipt')
+    .optional()
+    .isBoolean()
+    .withMessage('requestTaxReceipt must be a boolean'),
   body('message')
     .optional()
     .trim()
@@ -60,13 +65,23 @@ const handleValidationErrors = (req, res, next) => {
  */
 router.post('/create', donationValidation, handleValidationErrors, async (req, res) => {
   try {
-    const { amount, email, name, isAnonymous, message, donationType, userId } = req.body;
+    const { amount, email, name, isAnonymous, requestTaxReceipt, message, donationType, userId } = req.body;
+
+    // Validate that if tax receipt is requested, name and email are provided
+    if (requestTaxReceipt) {
+      if (!name || !email) {
+        return res.status(400).json({
+          success: false,
+          message: 'Name and email are required when requesting a tax receipt'
+        });
+      }
+    }
 
     // Create donation record with pending status
     const donation = await Donation.create({
       amount: parseFloat(amount),
-      email,
-      name: isAnonymous ? null : name,
+      email: email || null,
+      name: isAnonymous ? null : (name || null),
       userId: userId || null,
       isAnonymous: isAnonymous || false,
       message: message || null,

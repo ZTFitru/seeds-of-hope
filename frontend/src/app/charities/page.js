@@ -12,6 +12,8 @@ export default function Charities() {
         name: '',
         email: ''
     });
+    const [isAnonymous, setIsAnonymous] = useState(false);
+    const [requestTaxReceipt, setRequestTaxReceipt] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
 
@@ -41,12 +43,44 @@ export default function Charities() {
         setError(null);
     };
 
-    const validateForm = () => {
-        if (!donorInfo.email) {
-            setError('Please enter your email address');
-            return false;
+    const handleAnonymousChange = (e) => {
+        const checked = e.target.checked;
+        setIsAnonymous(checked);
+        if (checked) {
+            // Clear name and email when anonymous is checked, and uncheck tax receipt
+            setDonorInfo({
+                name: '',
+                email: ''
+            });
+            setRequestTaxReceipt(false);
         }
-        if (!donorInfo.email.includes('@')) {
+        setError(null);
+    };
+
+    const handleTaxReceiptChange = (e) => {
+        const checked = e.target.checked;
+        setRequestTaxReceipt(checked);
+        if (checked) {
+            // Uncheck anonymous when tax receipt is checked (can't be both)
+            setIsAnonymous(false);
+        }
+        setError(null);
+    };
+
+    const validateForm = () => {
+        // If tax receipt is requested, name and email are required
+        if (requestTaxReceipt) {
+            if (!donorInfo.name || donorInfo.name.trim() === '') {
+                setError('Name is required to receive a tax receipt email');
+                return false;
+            }
+            if (!donorInfo.email || donorInfo.email.trim() === '') {
+                setError('Email address is required to receive a tax receipt email');
+                return false;
+            }
+        }
+        // Email is optional, but if provided, must be valid
+        if (donorInfo.email && !donorInfo.email.includes('@')) {
             setError('Please enter a valid email address');
             return false;
         }
@@ -81,9 +115,10 @@ export default function Charities() {
                 },
                 body: JSON.stringify({
                     amount: amount,
-                    email: donorInfo.email,
+                    email: donorInfo.email || null,
                     name: donorInfo.name || null,
-                    isAnonymous: !donorInfo.name,
+                    isAnonymous: isAnonymous,
+                    requestTaxReceipt: requestTaxReceipt,
                     donationType: 'one-time'
                 })
             });
@@ -110,8 +145,7 @@ export default function Charities() {
     const isDonateDisabled = 
         isLoading ||
         selectedAmount === null ||
-        (selectedAmount === 'other' && (!otherAmount || Number(otherAmount) <= 0)) ||
-        !donorInfo.email;
+        (selectedAmount === 'other' && (!otherAmount || Number(otherAmount) <= 0));
 
     return (
         <div className="min-h-screen bg-gray-50">
@@ -134,6 +168,19 @@ export default function Charities() {
                         <h2 className="text-3xl font-bold text-gray-900 mb-2 text-center">
                             Make a Donation
                         </h2>
+
+                        {/* Message above donation fields */}
+                        <div className="mb-6 text-gray-700 space-y-3">
+                            <p>
+                                The Seeds of Hope event is designed to promote a spirit of collaboration, charity, and hope in order to accelerate/strengthen communities around the world.
+                            </p>
+                            <p>
+                                In our inaugural event, we will be placing a spotlight on nourishing food relief in crisis areas and the healing power of music, but we need your support to make this event as authentic and impactful as possible.
+                            </p>
+                            <p>
+                                (Please note, this page is strictly for charitable donations to support the organizational costs associated with the Seeds of Hope community event.  For more information about ticket sales/availability, please visit the Event Access tab for further updates.)
+                            </p>
+                        </div>
 
                         {/* Error message */}
                         {error && (
@@ -209,28 +256,48 @@ export default function Charities() {
                             <label className="block text-sm font-semibold text-gray-700 mb-3">
                                 Your Information
                             </label>
-                            <input
-                                type="email"
-                                name="email"
-                                value={donorInfo.email}
-                                onChange={handleInputChange}
-                                placeholder="Email address *"
-                                required
-                                disabled={isLoading}
-                                className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg mb-4 focus:ring-2 focus:ring-green-500 focus:border-green-500 text-black"
-                            />
+                            <div className="mb-4 space-y-2">
+                                <label className="flex items-center cursor-pointer">
+                                    <input
+                                        type="checkbox"
+                                        checked={isAnonymous}
+                                        onChange={handleAnonymousChange}
+                                        disabled={isLoading || requestTaxReceipt}
+                                        className={`w-4 h-4 text-green-600 border-gray-300 rounded focus:ring-green-500 ${requestTaxReceipt ? 'opacity-50 cursor-not-allowed' : ''}`}
+                                    />
+                                    <span className={`ml-2 text-sm text-gray-700 ${requestTaxReceipt ? 'text-gray-500' : ''}`}>Donate anonymously</span>
+                                </label>
+                                <label className="flex items-center cursor-pointer">
+                                    <input
+                                        type="checkbox"
+                                        checked={requestTaxReceipt}
+                                        onChange={handleTaxReceiptChange}
+                                        disabled={isLoading || isAnonymous}
+                                        className={`w-4 h-4 text-green-600 border-gray-300 rounded focus:ring-green-500 ${isAnonymous ? 'opacity-50 cursor-not-allowed' : ''}`}
+                                    />
+                                    <span className={`ml-2 text-sm text-gray-700 ${isAnonymous ? 'text-gray-500' : ''}`}>Send me a charitable contribution email for tax purposes</span>
+                                </label>
+                            </div>
                             <input
                                 type="text"
                                 name="name"
                                 value={donorInfo.name}
                                 onChange={handleInputChange}
-                                placeholder="Name (optional)"
-                                disabled={isLoading}
-                                className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-black"
+                                placeholder={requestTaxReceipt ? "Name (required for tax receipt)" : "Name (optional)"}
+                                disabled={isLoading || isAnonymous}
+                                required={requestTaxReceipt}
+                                className={`w-full px-4 py-3 border-2 border-gray-300 rounded-lg mb-4 focus:ring-2 focus:ring-green-500 focus:border-green-500 text-black ${isAnonymous ? 'bg-gray-100 cursor-not-allowed' : ''}`}
                             />
-                            <p className="text-xs text-gray-500 mt-2">
-                                If you leave your name blank, your donation will be anonymous.
-                            </p>
+                            <input
+                                type="email"
+                                name="email"
+                                value={donorInfo.email}
+                                onChange={handleInputChange}
+                                placeholder={requestTaxReceipt ? "Email address (required for tax receipt)" : "Email address (optional)"}
+                                disabled={isLoading || isAnonymous}
+                                required={requestTaxReceipt}
+                                className={`w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-black ${isAnonymous ? 'bg-gray-100 cursor-not-allowed' : ''}`}
+                            />
                         </div>
 
                         {/* Donate button */}
