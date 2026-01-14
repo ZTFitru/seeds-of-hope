@@ -3,6 +3,9 @@ const cors = require('cors');
 require('dotenv').config();
 
 const contactRoutes = require('./routes/contact');
+const donationRoutes = require('./routes/donations');
+const ticketRoutes = require('./routes/tickets');
+const paypalWebhookRoutes = require('./routes/paypalWebhook');
 const { sequelize, testConnection, syncDatabase } = require('./config/database');
 const models = require('./models');
 
@@ -70,13 +73,27 @@ app.get('/backend/health', (req, res) => {
 });
 
 // API Routes
-// Support both /api/contact and /backend/api/contact
+// Support both /api/* and /backend/api/* paths
 // This handles different routing scenarios:
-// 1. Direct Node.js server: /api/contact
-// 2. Passenger with full path: /backend/api/contact
-// 3. Passenger with stripped path: /api/contact (handled by first route)
+// 1. Direct Node.js server: /api/*
+// 2. Passenger with full path: /backend/api/*
+// 3. Passenger with stripped path: /api/* (handled by first route)
+
+// Contact routes
 app.use('/api/contact', contactRoutes);
 app.use('/backend/api/contact', contactRoutes);
+
+// Donation routes
+app.use('/api/donations', donationRoutes);
+app.use('/backend/api/donations', donationRoutes);
+
+// Ticket routes
+app.use('/api/tickets', ticketRoutes);
+app.use('/backend/api/tickets', ticketRoutes);
+
+// PayPal webhook (needs raw body for signature verification)
+app.use('/api/paypal', paypalWebhookRoutes);
+app.use('/backend/api/paypal', paypalWebhookRoutes);
 
 // 404 handler
 app.use((req, res) => {

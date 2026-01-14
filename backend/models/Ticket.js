@@ -64,6 +64,11 @@ const Ticket = sequelize.define('Ticket', {
     allowNull: true,
     comment: 'Transaction ID from payment processor (e.g., PayPal)'
   },
+  paypalOrderId: {
+    type: DataTypes.STRING(255),
+    allowNull: true,
+    comment: 'PayPal order ID (before capture)'
+  },
   paymentDate: {
     type: DataTypes.DATE,
     allowNull: true,
