@@ -87,6 +87,13 @@ app.use('/backend/api/contact', contactRoutes);
 app.use('/api/donations', donationRoutes);
 app.use('/backend/api/donations', donationRoutes);
 
+// Debug: Log registered donation routes
+if (process.env.NODE_ENV === 'development') {
+  console.log('Donation routes registered at:');
+  console.log('  - /api/donations');
+  console.log('  - /backend/api/donations');
+}
+
 // Ticket routes
 app.use('/api/tickets', ticketRoutes);
 app.use('/backend/api/tickets', ticketRoutes);

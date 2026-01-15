@@ -60,6 +60,18 @@ const handleValidationErrors = (req, res, next) => {
 };
 
 /**
+ * GET /api/donations/test
+ * Test endpoint to verify routes are working
+ */
+router.get('/test', (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: 'Donations route is working!',
+    timestamp: new Date().toISOString()
+  });
+});
+
+/**
  * POST /api/donations/create
  * Create a PayPal order for a donation
  */
@@ -84,6 +96,7 @@ router.post('/create', donationValidation, handleValidationErrors, async (req, r
       name: isAnonymous ? null : (name || null),
       userId: userId || null,
       isAnonymous: isAnonymous || false,
+      requestTaxReceipt: requestTaxReceipt || false,
       message: message || null,
       donationType: donationType || 'one-time',
       paymentStatus: 'pending',

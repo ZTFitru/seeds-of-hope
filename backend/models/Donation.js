@@ -127,6 +127,12 @@ const Donation = sequelize.define('Donation', {
     type: DataTypes.STRING(100),
     allowNull: true,
     comment: 'Tax receipt number for tax-deductible donations'
+  },
+  requestTaxReceipt: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,
+    allowNull: false,
+    comment: 'Whether the donor requested a tax receipt email'
   }
 }, {
   tableName: 'donations',
