@@ -25,6 +25,34 @@ export default function OurTeam() {
         {id: 4, logo: '/images/IconOnly_Transparent_NoBuffer.png'},
     ]
 
+    // Group partners into rows with hierarchy: row 0 = 2 items, row 1 = 3 items, rest = 4 items each
+    const groupPartnersIntoRows = (partners) => {
+        const rows = []
+        let index = 0
+        
+        // First row: 2 items
+        if (index < partners.length) {
+            rows.push({ cols: 2, items: partners.slice(index, index + 2) })
+            index += 2
+        }
+        
+        // Second row: 3 items
+        if (index < partners.length) {
+            rows.push({ cols: 3, items: partners.slice(index, index + 3) })
+            index += 3
+        }
+        
+        // Subsequent rows: 4 items each
+        while (index < partners.length) {
+            rows.push({ cols: 4, items: partners.slice(index, index + 4) })
+            index += 4
+        }
+        
+        return rows
+    }
+
+    const partnerRows = groupPartnersIntoRows(partners)
+
     return (
         <div className="min-h-screen flex flex-col bg-gray-50">
             <Header />
@@ -90,16 +118,30 @@ export default function OurTeam() {
                         Production Team
                     </h3>
 
-                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-10 items-center">
-                        {partners.map(partner => (
-                            <div key={partner.id} className="flex justify-center">
-                                <div className="w-40 h-24 relative grayscale hover:grayscale-0 transition duration-300">
-                                    <img
-                                        src={partner.logo}
-                                        alt="Production Team Logo"
-                                        className="object-contain w-full h-full"
-                                    />
-                                </div>
+                    <div className="flex flex-col gap-10 items-center">
+                        {partnerRows.map((row, rowIndex) => (
+                            <div 
+                                key={rowIndex} 
+                                className={`grid gap-10 items-center ${
+                                    row.cols === 2 
+                                        ? 'grid-cols-2' 
+                                        : row.cols === 3 
+                                        ? 'grid-cols-1 sm:grid-cols-3' 
+                                        : 'grid-cols-2 sm:grid-cols-4'
+                                }`}
+                                style={{ width: '100%', maxWidth: '100%' }}
+                            >
+                                {row.items.map(partner => (
+                                    <div key={partner.id} className="flex justify-center">
+                                        <div className="w-40 h-24 relative grayscale hover:grayscale-0 transition duration-300">
+                                            <img
+                                                src={partner.logo}
+                                                alt="Production Team Logo"
+                                                className="object-contain w-full h-full"
+                                            />
+                                        </div>
+                                    </div>
+                                ))}
                             </div>
                         ))}
                     </div>
