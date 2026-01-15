@@ -109,7 +109,7 @@ app.use((err, req, res, next) => {
   });
 });
 
-const PORT = process.env.PORT || process.env.PORT_NUMBER || 3000;
+const PORT = process.env.PORT || process.env.PORT_NUMBER || 5000;
 
 // Handle cPanel/Passenger environment
 // In cPanel with Passenger, the port is automatically assigned

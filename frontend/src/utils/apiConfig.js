@@ -22,8 +22,13 @@ export function getApiBaseUrl() {
     return apiUrl.endsWith('/') ? apiUrl.slice(0, -1) : apiUrl;
   }
   
-  // Priority 2: In development, use localhost
-  if (typeof window === 'undefined' && process.env.NODE_ENV === 'development') {
+  // Priority 2: In development, use localhost:5000 (backend runs on port 5000 in dev)
+  // Check if we're running on localhost (browser check) or in development mode
+  const isDevelopment = process.env.NODE_ENV === 'development' || 
+    (typeof window !== 'undefined' && 
+     (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'));
+  
+  if (isDevelopment) {
     return 'http://localhost:5000';
   }
   

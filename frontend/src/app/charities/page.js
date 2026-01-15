@@ -17,7 +17,7 @@ export default function Charities() {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    const presetAmounts = [1, 2.50, 5];
+    const presetAmounts = [1, 3, 5];
 
     const handleAmountSelect = (amount) => {
         setSelectedAmount(amount);
@@ -115,17 +115,32 @@ export default function Charities() {
                 },
                 body: JSON.stringify({
                     amount: amount,
-                    email: donorInfo.email || null,
-                    name: donorInfo.name || null,
+                    // Only send email if not anonymous and it has a value
+                    email: isAnonymous ? null : (donorInfo.email || null),
+                    // Only send name if not anonymous and it has a value
+                    name: isAnonymous ? null : (donorInfo.name || null),
                     isAnonymous: isAnonymous,
                     requestTaxReceipt: requestTaxReceipt,
                     donationType: 'one-time'
                 })
             });
 
+            // Check if response is JSON before parsing
+            const contentType = response.headers.get('content-type');
+            if (!contentType || !contentType.includes('application/json')) {
+                const text = await response.text();
+                console.error('Non-JSON response received:', text.substring(0, 200));
+                throw new Error(`Server returned an error page. Status: ${response.status}. Please check the server logs.`);
+            }
+
             const data = await response.json();
 
             if (!response.ok || !data.success) {
+                // Handle validation errors
+                if (data.errors && Array.isArray(data.errors)) {
+                    const errorMessages = data.errors.map(err => err.msg || err.message).join(', ');
+                    throw new Error(errorMessages || data.message || 'Validation failed');
+                }
                 throw new Error(data.message || 'Failed to create donation order');
             }
 
@@ -166,7 +181,7 @@ export default function Charities() {
                 <div className="max-w-2xl mx-auto">
                     <div className="bg-white rounded-lg shadow-lg p-8">
                         <h2 className="text-3xl font-bold text-gray-900 mb-2 text-center">
-                            Make a Donation
+                            Donate Here
                         </h2>
 
                         {/* Message above donation fields */}
@@ -275,7 +290,7 @@ export default function Charities() {
                                         disabled={isLoading || isAnonymous}
                                         className={`w-4 h-4 text-green-600 border-gray-300 rounded focus:ring-green-500 ${isAnonymous ? 'opacity-50 cursor-not-allowed' : ''}`}
                                     />
-                                    <span className={`ml-2 text-sm text-gray-700 ${isAnonymous ? 'text-gray-500' : ''}`}>Send me a charitable contribution email for tax purposes</span>
+                                    <span className={`ml-2 text-sm text-gray-700 ${isAnonymous ? 'text-gray-500' : ''}`}>Send me a charitable contribution letter for tax purposes</span>
                                 </label>
                             </div>
                             <input
