@@ -13,7 +13,7 @@ export default function Media() {
                     Media
                 </h1>
                 <p className="text-lg text-gray-600 mb-8 max-w-xl">
-                    Our photos, videos, and live events content will be available here soon.
+                    Our photos, videos, and online presentation content will be available here soon.
                     Stay tuned for updates.
                 </p>
                 <span className="text-gray-500 text-sm">
