@@ -176,16 +176,20 @@ export default function Charities() {
                     <p className="text-lg text-gray-600 max-w-3xl mx-auto">
                         Your contribution helps us make a difference in our community. Thank you for your support!
                     </p>
+                    <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                        Content coming soon...
+                    </p>
                 </div>
 
-                <div className="max-w-2xl mx-auto">
+                {/* Donation form - temporarily hidden */}
+                {/* <div className="max-w-2xl mx-auto">
                     <div className="bg-white rounded-lg shadow-lg p-8">
                         <h2 className="text-3xl font-bold text-gray-900 mb-2 text-center">
                             Donate Now!
                         </h2>
 
                         {/* Message above donation fields */}
-                        <div className="mb-6 text-gray-700 space-y-3">
+                        {/* <div className="mb-6 text-gray-700 space-y-3">
                             <p>
                                 The Seeds of Hope event is designed to promote a spirit of collaboration, charity, and hope in order to accelerate/strengthen communities around the world.
                             </p>
@@ -198,14 +202,14 @@ export default function Charities() {
                         </div>
 
                         {/* Error message */}
-                        {error && (
+                        {/* {error && (
                             <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
                                 <p className="text-red-800 text-sm">{error}</p>
                             </div>
                         )}
 
                         {/* Donation amount selection */}
-                        <div className="mb-6">
+                        {/* <div className="mb-6">
                             <label className="block text-sm font-semibold text-gray-700 mb-3">
                                 Select Donation Amount
                             </label>
@@ -229,7 +233,7 @@ export default function Charities() {
                             </div>
 
                             {/* Other amount option */}
-                            <button
+                            {/* <button
                                 onClick={() => {
                                     setSelectedAmount('other');
                                     setOtherAmount('');
@@ -247,7 +251,7 @@ export default function Charities() {
                             </button>
 
                             {/* Other amount input */}
-                            {selectedAmount === 'other' && (
+                            {/* {selectedAmount === 'other' && (
                                 <div className="relative">
                                     <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 font-semibold">
                                         $
@@ -267,7 +271,7 @@ export default function Charities() {
                         </div>
 
                         {/* Donor information */}
-                        <div className="mb-6">
+                        {/* <div className="mb-6">
                             <label className="block text-sm font-semibold text-gray-700 mb-3">
                                 Your Information
                             </label>
@@ -316,7 +320,7 @@ export default function Charities() {
                         </div>
 
                         {/* Donate button */}
-                        <button
+                        {/* <button
                             onClick={handleDonate}
                             disabled={isDonateDisabled}
                             className={`w-full px-6 py-4 rounded-lg font-semibold text-lg transition-colors
@@ -336,11 +340,11 @@ export default function Charities() {
                 </div>
 
                 {/* Disclaimer */}
-                <div className="max-w-3xl mx-auto mt-8 mb-8">
+                {/* <div className="max-w-3xl mx-auto mt-8 mb-8">
                     <p className="text-sm text-gray-600 text-center italic">
                         <strong>Disclaimer:</strong> Donations may be made anonymously, or for a charitable contribution tax deduction, in which case contact information data will be collected, and the participating 501c3 member of the Seeds of Hope Organizational Team will disperse appropriate letters no later than December 31, 2026.
                     </p>
-                </div>
+                </div> */}
             </div>
             <Footer />
         </div>
