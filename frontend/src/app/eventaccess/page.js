@@ -8,68 +8,99 @@ export default function EventAcess() {
         <div className="min-h-screen flex flex-col bg-gray-50">
             <Header />
 
-            <main className="flex flex-col items-center justify-center flex-1 text-center px-4 py-20">
-            {/* <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 flex-1"> */}
-                <h1 className="text-4xl font-bold text-gray-900 mb-16">
-                    Event Acess
+            <main className="flex flex-col items-center flex-1 px-4 py-20">
+                <h1 className="text-4xl font-bold text-gray-900 mb-12 text-center">
+                    Event Access
                 </h1>
-                <p className="text-lg text-gray-600 mb-8 max-w-xl">
-                    We are preparing something special for our upcoming events.
-                    Please come back soon.
+                <p className="text-lg text-gray-600 mb-12 max-w-2xl text-center">
+                    Choose the ticket that best fits your experience. VIP tickets 
+                    include exlusive perks and an optional catered dinner.
                 </p>
 
-                <span className="text-gray-500 text-sm">
-                    Coming Soon...
-                </span>
-                {/* <section className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20"> */}
-                    {/* event images */}
-                    {/* <div className="w-full h-80 bg-gray-200 rounded-lg overflow-hidden">
+                <div className="mb-10 max-w-2xl w-full bg-yellow-50 border border-yellow-300 rounded-md p-4 text-center">
+                    <p className="text-sm text-yellow-800 font-medium">
+                        Notice: You must be 21 years of age or older to purchase a ticket.
+                    </p>
+                    <p className="text-sm text-yellow-700 mt-1">
+                        Alcohol will be served at this event. Valid ID will be required at entry.
+                    </p>
+                </div>
 
-                    </div> */}
-
-                    {/* event info */}
-                    {/* <div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full max-w-5xl">
+                    {/* regular ticket */}
+                    <div className="bg-white rounded-lg shadow-lg p-8 flex flex-col">
                         <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                            Featured Live Event
+                            General Admission
                         </h2>
-                        <p className="text-gray-700 mb-6">
-                            Join us for an unforgettable exerience featuring live performances,
-                            exclusive content, and a chance to support an incredible cause.
+                        <p className="text-gray-600 mb-6">
+                            Perfect for enjoying the event and supporting the cause.
                         </p>
+                        <ul className="text-left text-gray-700 space-y-3 mb-8">
+                            <li>&#8226; Entry to the live event</li>
+                            <li>&#8226; Access to general seating</li>
+                        </ul>
 
-                        <button className="bg-green-700 hover:bg-green-800 text-white font-semibold px-6 py-3 rounded-md transition cursor-pointer">
-                            Buy Ticket
-                        </button>
-                    </div> */}
-                {/* </section> */}
-
-                {/* more events? */}
-                {/* <section>
-                    <h2 className="text-3xl font-semibold text-gray-900 mb-8">
-                        Upcoming Events
-                    </h2>
-
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-                        {[1,2,3].map((event)=> (
-                            <div key={event} className="bg-white shadow-lg rounded-lg overflow-hidden">
-                                <div className="w-full h-48 bg-gray-200"></div>
-
-                                <div className="p-6">
-                                    <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                                        Event Title
-                                    </h3>
-                                    <p className="text-gray-600 mb-4 text-sm">
-                                        A description of the event goes here.
-                                    </p>
-                                    <button className="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded-md text-sm transition cursor-pointer">
-                                        Buy Ticket
-                                    </button>
-                                </div>
+                        <div className="mt-auto">
+                            <div className="text-3xl font-bold text-gray-900 mb-4">
+                                $50
                             </div>
-                        ))}
+                            <button className="w-full bg-green-700 hover:bg-green-800 text-white font-semibold px-6 py-3 rounded-md transition cursor-pointer">
+                                Purchase General Ticket
+                            </button>
+                        </div>
                     </div>
-                </section> */}
+
+                    {/* VIP ticket */}
+                    <div className="bg-white rounded-lg shadow-lg p-8 flex flex-col border-2 border-yellow-400">
+                        <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+                            VIP Admission
+                        </h2>
+                        <p className="text-gray-600 mb-6">
+                            An elevated experience with exclusive access and premium perks.
+                        </p>
+                        <ul className="text-left text-gray-700 space-y-3 mb-6">
+                            <li>&#8226; Reserved VIP seating</li>
+                            <li>&#8226; Reserved VIP seating</li>
+                            <li>&#8226; Reserved VIP seating</li>
+                        </ul>
+
+                        {/* catered dinner */}
+                        {/* <div className="mb-6 text-left">
+                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                                Catered Dinner:
+                            </label>
+                            <select 
+                                className="w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-2 focus:ring-yellow-500 focus:outline-none" defaultValue="no">
+                                    <option value="no">No, I do not want the catered dinner</option>
+                                    <option value="yes">Yes, I want the catered dinner</option>
+                            </select>
+                        </div> */}
+                        <div className="mb-6 flex items-center gap-3">
+                            <input
+                                type="checkbox"
+                                id="cateredDinner"
+                                className="h-4 w-4 text-yellow-500 border-gray-300 rounded focus:ring-yellow-500"
+                            />
+                            <label
+                                htmlFor="cateredDinner"
+                                className="text-sm font-medium text-gray-700"
+                            >
+                                Add Catered Dinner
+                            </label>
+                        </div>
+                        <div className="mt-auto">
+                            <div className="text-3xl font-bold text-gray-900 mb-4">
+                                $80
+                            </div>
+                            <button className="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-6 py-3 rounded-md transition cursor-pointer">
+                                Purchase VIP Ticket
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </main>
+
+            
 
             <Footer />
         </div>
