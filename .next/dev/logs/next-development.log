@@ -1,0 +1,1079 @@
+[00:00:01.134] Server  LOG      ✓ Ready in 939ms
+[00:00:24.793] Server  WARN     ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[00:00:48.908] Server  WARN     ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[00:01:56.650] Browser ERROR   ./src/components/CharityCard.jsx
+Error:   × Expected '</', got 'jsx text (
+  │
+  │                 )'
+    ╭─[/Users/zfitru/webProj/seeds-of-hope/src/components/CharityCard.jsx:31:1]
+ 28 │                 </div>
+ 29 │     
+ 30 │                 <div className="p-6 flex-1 flex flex-col">
+ 31 │ ╭─▶                 <h2 className="text-xl font-bold mb-4 text-gray-900">{charity.name}</h3>
+ 32 │ │   
+ 33 │ ╰─▶                 {/* donate button */}
+ 34 │                     <div className="flex gap-3 mb-4">
+ 35 │                         {presetAmount.map(amount => (
+ 36 │                             <button
+    ╰────
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/components/CharityCard.jsx
+./src/app/charities/page.js
+[00:01:57.201] Server  ERROR    ⨯ ./src/components/CharityCard.jsx
+Error:   × Expected '</', got 'jsx text (
+  │
+  │                 )'
+    ╭─[/Users/zfitru/webProj/seeds-of-hope/src/components/CharityCard.jsx:31:1]
+ 28 │                 </div>
+ 29 │     
+ 30 │                 <div className="p-6 flex-1 flex flex-col">
+ 31 │ ╭─▶                 <h2 className="text-xl font-bold mb-4 text-gray-900">{charity.name}</h3>
+ 32 │ │   
+ 33 │ ╰─▶                 {/* donate button */}
+ 34 │                     <div className="flex gap-3 mb-4">
+ 35 │                         {presetAmount.map(amount => (
+ 36 │                             <button
+    ╰────
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/components/CharityCard.jsx
+./src/app/charities/page.js
+[00:01:58.740] Browser ERROR   ./src/components/CharityCard.jsx
+Error:   × Expected '</', got 'jsx text (
+  │
+  │                 )'
+    ╭─[/Users/zfitru/webProj/seeds-of-hope/src/components/CharityCard.jsx:31:1]
+ 28 │                 </div>
+ 29 │     
+ 30 │                 <div className="p-6 flex-1 flex flex-col">
+ 31 │ ╭─▶                 <h2 className="text-xl font-bold mb-4 text-gray-900">{charity.name}</h3>
+ 32 │ │   
+ 33 │ ╰─▶                 {/* donate button */}
+ 34 │                     <div className="flex gap-3 mb-4">
+ 35 │                         {presetAmount.map(amount => (
+ 36 │                             <button
+    ╰────
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/components/CharityCard.jsx
+./src/app/charities/page.js
+[00:03:09.465] Server  WARN     ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[00:03:57.294] Browser ERROR   ./src/app/ourteam/page.js
+Error:   × Expected '</', got 'jsx text (
+  │
+  │                     )'
+    ╭─[/Users/zfitru/webProj/seeds-of-hope/src/app/ourteam/page.js:91:1]
+ 88 │                     <section className="mb-20">
+ 89 │                         <h3 className="text-3xl font-semibold text-gray-900 mb-8 text-center">
+ 90 │                             Production Team
+ 91 │ ╭─▶                     </h2>
+ 92 │ │   
+ 93 │ ╰─▶                     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-10 items-center">
+ 94 │                             {partners.map(partner => (
+ 95 │                                 <div key={partner.id} className="flex justify-center">
+ 96 │                                     <div className="w-40 h-24 relative grayscale hover:grayscale-0 transition duration-300">
+    ╰────
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/ourteam/page.js
+[00:03:57.392] Server  ERROR    ⨯ ./src/app/ourteam/page.js
+Error:   × Expected '</', got 'jsx text (
+  │
+  │                     )'
+    ╭─[/Users/zfitru/webProj/seeds-of-hope/src/app/ourteam/page.js:91:1]
+ 88 │                     <section className="mb-20">
+ 89 │                         <h3 className="text-3xl font-semibold text-gray-900 mb-8 text-center">
+ 90 │                             Production Team
+ 91 │ ╭─▶                     </h2>
+ 92 │ │   
+ 93 │ ╰─▶                     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-10 items-center">
+ 94 │                             {partners.map(partner => (
+ 95 │                                 <div key={partner.id} className="flex justify-center">
+ 96 │                                     <div className="w-40 h-24 relative grayscale hover:grayscale-0 transition duration-300">
+    ╰────
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/ourteam/page.js
+[00:03:57.440] Browser ERROR   ./src/app/ourteam/page.js
+Error:   × Expected '</', got 'jsx text (
+  │
+  │                     )'
+    ╭─[/Users/zfitru/webProj/seeds-of-hope/src/app/ourteam/page.js:91:1]
+ 88 │                     <section className="mb-20">
+ 89 │                         <h3 className="text-3xl font-semibold text-gray-900 mb-8 text-center">
+ 90 │                             Production Team
+ 91 │ ╭─▶                     </h2>
+ 92 │ │   
+ 93 │ ╰─▶                     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-10 items-center">
+ 94 │                             {partners.map(partner => (
+ 95 │                                 <div key={partner.id} className="flex justify-center">
+ 96 │                                     <div className="w-40 h-24 relative grayscale hover:grayscale-0 transition duration-300">
+    ╰────
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/ourteam/page.js
+[00:03:58.381] Server  ERROR    ⨯ ./src/app/ourteam/page.js
+Error:   × Expected '</', got 'jsx text (
+  │
+  │                     )'
+    ╭─[/Users/zfitru/webProj/seeds-of-hope/src/app/ourteam/page.js:91:1]
+ 88 │                     <section className="mb-20">
+ 89 │                         <h3 className="text-3xl font-semibold text-gray-900 mb-8 text-center">
+ 90 │                             Production Team
+ 91 │ ╭─▶                     </h2>
+ 92 │ │   
+ 93 │ ╰─▶                     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-10 items-center">
+ 94 │                             {partners.map(partner => (
+ 95 │                                 <div key={partner.id} className="flex justify-center">
+ 96 │                                     <div className="w-40 h-24 relative grayscale hover:grayscale-0 transition duration-300">
+    ╰────
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/ourteam/page.js
+[00:03:58.501] Browser ERROR   ./src/app/ourteam/page.js
+Error:   × Expected '</', got 'jsx text (
+  │
+  │                     )'
+    ╭─[/Users/zfitru/webProj/seeds-of-hope/src/app/ourteam/page.js:91:1]
+ 88 │                     <section className="mb-20">
+ 89 │                         <h3 className="text-3xl font-semibold text-gray-900 mb-8 text-center">
+ 90 │                             Production Team
+ 91 │ ╭─▶                     </h2>
+ 92 │ │   
+ 93 │ ╰─▶                     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-10 items-center">
+ 94 │                             {partners.map(partner => (
+ 95 │                                 <div key={partner.id} className="flex justify-center">
+ 96 │                                     <div className="w-40 h-24 relative grayscale hover:grayscale-0 transition duration-300">
+    ╰────
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/ourteam/page.js
+[00:03:59.011] Browser ERROR   uncaughtError: ModuleBuildError: Module build failed (from ./node_modules/next/dist/build/webpack/loaders/next-swc-loader.js):
+Error:   × Expected '</', got 'jsx text (
+  │
+  │                     )'
+    ╭─[/Users/zfitru/webProj/seeds-of-hope/src/app/ourteam/page.js:91:1]
+ 88 │                     <section className="mb-20">
+ 89 │                         <h3 className="text-3xl font-semibold text-gray-900 mb-8 text-center">
+ 90 │                             Production Team
+ 91 │ ╭─▶                     </h2>
+ 92 │ │   
+ 93 │ ╰─▶                     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-10 items-center">
+ 94 │                             {partners.map(partner => (
+ 95 │                                 <div key={partner.id} className="flex justify-center">
+ 96 │                                     <div className="w-40 h-24 relative grayscale hover:grayscale-0 transition duration-300">
+    ╰────
+
+
+Caused by:
+    Syntax Error
+[00:03:59.113] Browser ERROR   ./src/app/ourteam/page.js
+Error:   × Expected '</', got 'jsx text (
+  │
+  │                     )'
+    ╭─[/Users/zfitru/webProj/seeds-of-hope/src/app/ourteam/page.js:91:1]
+ 88 │                     <section className="mb-20">
+ 89 │                         <h3 className="text-3xl font-semibold text-gray-900 mb-8 text-center">
+ 90 │                             Production Team
+ 91 │ ╭─▶                     </h2>
+ 92 │ │   
+ 93 │ ╰─▶                     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-10 items-center">
+ 94 │                             {partners.map(partner => (
+ 95 │                                 <div key={partner.id} className="flex justify-center">
+ 96 │                                     <div className="w-40 h-24 relative grayscale hover:grayscale-0 transition duration-300">
+    ╰────
+
+Caused by:
+    Syntax Error
+[00:04:00.857] Server  LOG      ○ Compiling /_error ...
+[00:04:01.824] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:04:02.083] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:04:02.561] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:04:25.389] Server  WARN     ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[00:05:23.894] Browser ERROR   ./src/app/page.js
+Error:   × Expected '</', got 'jsx text (
+  │             )'
+     ╭─[/Users/zfitru/webProj/seeds-of-hope/src/app/page.js:187:1]
+ 184 │               <div className="text-center mb-12">
+ 185 │                 <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+ 186 │                   Get In Touch
+ 187 │ ╭─▶             </h2>
+ 188 │ ╰─▶             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+ 189 │                   Have any questions or want to learn more about our work? We'd love to hear from you.
+ 190 │                 </p>
+ 191 │               </div>
+     ╰────
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/page.js
+[00:05:23.906] Server  ERROR    ⨯ ./src/app/page.js
+Error:   × Expected '</', got 'jsx text (
+  │             )'
+     ╭─[/Users/zfitru/webProj/seeds-of-hope/src/app/page.js:187:1]
+ 184 │               <div className="text-center mb-12">
+ 185 │                 <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+ 186 │                   Get In Touch
+ 187 │ ╭─▶             </h2>
+ 188 │ ╰─▶             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+ 189 │                   Have any questions or want to learn more about our work? We'd love to hear from you.
+ 190 │                 </p>
+ 191 │               </div>
+     ╰────
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/page.js
+[00:05:24.381] Browser ERROR   uncaughtError: ModuleBuildError: Module build failed (from ./node_modules/next/dist/build/webpack/loaders/next-swc-loader.js):
+Error:   × Expected '</', got 'jsx text (
+  │             )'
+     ╭─[/Users/zfitru/webProj/seeds-of-hope/src/app/page.js:187:1]
+ 184 │               <div className="text-center mb-12">
+ 185 │                 <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+ 186 │                   Get In Touch
+ 187 │ ╭─▶             </h2>
+ 188 │ ╰─▶             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+ 189 │                   Have any questions or want to learn more about our work? We'd love to hear from you.
+ 190 │                 </p>
+ 191 │               </div>
+     ╰────
+
+
+Caused by:
+    Syntax Error
+[00:05:24.496] Browser ERROR   ./src/app/page.js
+Error:   × Expected '</', got 'jsx text (
+  │             )'
+     ╭─[/Users/zfitru/webProj/seeds-of-hope/src/app/page.js:187:1]
+ 184 │               <div className="text-center mb-12">
+ 185 │                 <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+ 186 │                   Get In Touch
+ 187 │ ╭─▶             </h2>
+ 188 │ ╰─▶             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+ 189 │                   Have any questions or want to learn more about our work? We'd love to hear from you.
+ 190 │                 </p>
+ 191 │               </div>
+     ╰────
+
+Caused by:
+    Syntax Error
+[00:05:26.309] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:05:26.698] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:05:27.015] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:09:27.302] Browser ERROR   ./src/app/layout.js
+Error:   × Expected ident
+    ╭─[/Users/zfitru/webProj/seeds-of-hope/src/app/layout.js:16:1]
+ 13 │ 
+ 14 │ const
+ 15 │ 
+ 16 │ export const metadata = {
+    · ──────
+ 17 │   title: "Seeds of Hope",
+ 18 │   description: "Generated by create next app",
+ 19 │ };
+    ╰────
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/layout.js
+[00:09:27.326] Server  ERROR    ⨯ ./src/app/layout.js
+Error:   × Expected ident
+    ╭─[/Users/zfitru/webProj/seeds-of-hope/src/app/layout.js:16:1]
+ 13 │ 
+ 14 │ const
+ 15 │ 
+ 16 │ export const metadata = {
+    · ──────
+ 17 │   title: "Seeds of Hope",
+ 18 │   description: "Generated by create next app",
+ 19 │ };
+    ╰────
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/layout.js
+[00:09:35.025] Browser ERROR   src/app/layout.js
+`next/font` error:
+Preload is enabled but no subsets were specified for font `Lora`. Please specify subsets or disable preloading if your intended subset can't be preloaded.
+Available subsets: `cyrillic`, `cyrillic-ext`, `latin`, `latin-ext`, `math`, `symbols`, `vietnamese`
+
+Read more: https://nextjs.org/docs/messages/google-fonts-missing-subsets
+[00:09:35.107] Server  ERROR    ⨯ src/app/layout.js
+`next/font` error:
+Preload is enabled but no subsets were specified for font `Lora`. Please specify subsets or disable preloading if your intended subset can't be preloaded.
+Available subsets: `cyrillic`, `cyrillic-ext`, `latin`, `latin-ext`, `math`, `symbols`, `vietnamese`
+
+Read more: https://nextjs.org/docs/messages/google-fonts-missing-subsets
+[00:09:37.382] Browser ERROR   src/app/layout.js
+`next/font` error:
+Preload is enabled but no subsets were specified for font `Lora`. Please specify subsets or disable preloading if your intended subset can't be preloaded.
+Available subsets: `cyrillic`, `cyrillic-ext`, `latin`, `latin-ext`, `math`, `symbols`, `vietnamese`
+
+Read more: https://nextjs.org/docs/messages/google-fonts-missing-subsets
+[00:09:37.382] Browser ERROR   src/app/layout.js
+An error occurred in `next/font`.
+
+NextFontError: Preload is enabled but no subsets were specified for font `Lora`. Please specify subsets or disable preloading if your intended subset can't be preloaded.
+Available subsets: `cyrillic`, `cyrillic-ext`, `latin`, `latin-ext`, `math`, `symbols`, `vietnamese`
+
+Read more: https://nextjs.org/docs/messages/google-fonts-missing-subsets
+    at nextFontError (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/@next/font/dist/next-font-error.js:8:17)
+    at validateGoogleFontFunctionCall (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/@next/font/dist/google/validate-google-font-function-call.js:29:49)
+    at nextFontGoogleFontLoader (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/@next/font/dist/google/loader.js:60:207)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js:90:155
+    at Span.traceAsyncFn (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/trace/trace.js:157:26)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js:90:138
+    at Span.traceAsyncFn (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/trace/trace.js:157:26)
+    at Object.nextFontLoader (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js:23:31)
+    at tryRunOrWebpackError (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:316134)
+    at __webpack_require_module__ (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:131536)
+    at __nested_webpack_require_161494__ (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:130971)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:131828
+    at symbolIterator (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14444)
+    at done (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14824)
+    at Hook.eval [as callAsync] (eval at create (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:14:9224), <anonymous>:15:1)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:130691
+    at symbolIterator (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14402)
+    at timesSync (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:5027)
+    at Object.eachLimit (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14208)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:130251
+    at symbolIterator (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14444)
+    at timesSync (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:5027)
+    at Object.eachLimit (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14208)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:129989
+    at symbolIterator (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14444)
+    at done (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14824)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:129500
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:110335
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:315970
+    at _done (eval at create (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:14:9224), <anonymous>:9:1)
+    at Hook.eval [as callAsync] (eval at create (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:14:9224), <anonymous>:39:22)
+    at Cache.store (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:16216)
+    at ItemCacheFacade.store (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:17460)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:110322
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:16081
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:15642
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:549076
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:16111
+    at eval (eval at create (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:14:9224), <anonymous>:30:1)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+-- inner error --
+NextFontError: Preload is enabled but no subsets were specified for font `Lora`. Please specify subsets or disable preloading if your intended subset can't be preloaded.
+Available subsets: `cyrillic`, `cyrillic-ext`, `latin`, `latin-ext`, `math`, `symbols`, `vietnamese`
+
+Read more: https://nextjs.org/docs/messages/google-fonts-missing-subsets
+    at nextFontError (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/@next/font/dist/next-font-error.js:8:17)
+    at validateGoogleFontFunctionCall (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/@next/font/dist/google/validate-google-font-function-call.js:29:49)
+    at nextFontGoogleFontLoader (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/@next/font/dist/google/loader.js:60:207)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js:90:155
+    at Span.traceAsyncFn (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/trace/trace.js:157:26)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js:90:138
+    at Span.traceAsyncFn (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/trace/trace.js:157:26)
+    at Object.nextFontLoader (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js:23:31)
+    at Object.<anonymous> (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[15].oneOf[2].use[1]!/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[15].oneOf[2].use[2]!/Users/zfitru/webProj/seeds-of-hope/node_modules/next/font/google/target.css?{"path":"src/app/layout.js","import":"Lora","arguments":[],"variableName":"lora"}:1:7)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:962757
+    at Hook.eval [as call] (eval at create (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:14:9002), <anonymous>:7:1)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:131569
+    at tryRunOrWebpackError (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:316088)
+    at __webpack_require_module__ (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:131536)
+    at __nested_webpack_require_161494__ (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:130971)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:131828
+    at symbolIterator (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14444)
+    at done (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14824)
+    at Hook.eval [as callAsync] (eval at create (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:14:9224), <anonymous>:15:1)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:130691
+    at symbolIterator (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14402)
+    at timesSync (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:5027)
+    at Object.eachLimit (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14208)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:130251
+    at symbolIterator (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14444)
+    at timesSync (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:5027)
+    at Object.eachLimit (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14208)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:129989
+    at symbolIterator (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14444)
+    at done (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14824)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:129500
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:110335
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:315970
+    at _done (eval at create (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:14:9224), <anonymous>:9:1)
+    at Hook.eval [as callAsync] (eval at create (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:14:9224), <anonymous>:39:22)
+    at Cache.store (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:16216)
+    at ItemCacheFacade.store (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:17460)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:110322
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:16081
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:15642
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:549076
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:16111
+    at eval (eval at create (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:14:9224), <anonymous>:30:1)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+Generated code for /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[15].oneOf[2].use[1]!/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[15].oneOf[2].use[2]!/Users/zfitru/webProj/seeds-of-hope/node_modules/next/font/google/target.css?{"path":"src/app/layout.js","import":"Lora","arguments":[],"variableName":"lora"}
+[00:09:37.382] Browser ERROR   src/app/layout.js
+`next/font` error:
+Preload is enabled but no subsets were specified for font `Lora`. Please specify subsets or disable preloading if your intended subset can't be preloaded.
+Available subsets: `cyrillic`, `cyrillic-ext`, `latin`, `latin-ext`, `math`, `symbols`, `vietnamese`
+
+Read more: https://nextjs.org/docs/messages/google-fonts-missing-subsets
+[00:09:37.382] Browser ERROR   src/app/layout.js
+An error occurred in `next/font`.
+
+NextFontError: Preload is enabled but no subsets were specified for font `Lora`. Please specify subsets or disable preloading if your intended subset can't be preloaded.
+Available subsets: `cyrillic`, `cyrillic-ext`, `latin`, `latin-ext`, `math`, `symbols`, `vietnamese`
+
+Read more: https://nextjs.org/docs/messages/google-fonts-missing-subsets
+    at nextFontError (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/@next/font/dist/next-font-error.js:8:17)
+    at validateGoogleFontFunctionCall (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/@next/font/dist/google/validate-google-font-function-call.js:29:49)
+    at nextFontGoogleFontLoader (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/@next/font/dist/google/loader.js:60:207)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js:90:155
+    at Span.traceAsyncFn (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/trace/trace.js:157:26)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js:90:138
+    at Span.traceAsyncFn (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/trace/trace.js:157:26)
+    at Object.nextFontLoader (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js:23:31)
+    at tryRunOrWebpackError (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:316134)
+    at __webpack_require_module__ (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:131536)
+    at __nested_webpack_require_161494__ (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:130971)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:131828
+    at symbolIterator (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14444)
+    at done (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14824)
+    at Hook.eval [as callAsync] (eval at create (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:14:9224), <anonymous>:15:1)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:130691
+    at symbolIterator (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14402)
+    at timesSync (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:5027)
+    at Object.eachLimit (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14208)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:130251
+    at symbolIterator (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14444)
+    at timesSync (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:5027)
+    at Object.eachLimit (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14208)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:129989
+    at symbolIterator (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14444)
+    at done (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14824)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:129500
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:110351
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:16170
+    at Hook.eval [as callAsync] (eval at create (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:14:9224), <anonymous>:16:1)
+    at Cache.get (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:15945)
+    at ItemCacheFacade.get (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:17292)
+    at Compilation._codeGenerationModule (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:109953)
+    at codeGen (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:129387)
+    at symbolIterator (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14402)
+    at timesSync (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:5027)
+    at Object.eachLimit (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14208)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:129634
+    at processQueue (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:1448710)
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+-- inner error --
+NextFontError: Preload is enabled but no subsets were specified for font `Lora`. Please specify subsets or disable preloading if your intended subset can't be preloaded.
+Available subsets: `cyrillic`, `cyrillic-ext`, `latin`, `latin-ext`, `math`, `symbols`, `vietnamese`
+
+Read more: https://nextjs.org/docs/messages/google-fonts-missing-subsets
+    at nextFontError (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/@next/font/dist/next-font-error.js:8:17)
+    at validateGoogleFontFunctionCall (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/@next/font/dist/google/validate-google-font-function-call.js:29:49)
+    at nextFontGoogleFontLoader (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/@next/font/dist/google/loader.js:60:207)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js:90:155
+    at Span.traceAsyncFn (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/trace/trace.js:157:26)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js:90:138
+    at Span.traceAsyncFn (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/trace/trace.js:157:26)
+    at Object.nextFontLoader (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js:23:31)
+    at Object.<anonymous> (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[15].oneOf[2].use[1]!/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[15].oneOf[2].use[2]!/Users/zfitru/webProj/seeds-of-hope/node_modules/next/font/google/target.css?{"path":"src/app/layout.js","import":"Lora","arguments":[],"variableName":"lora"}:1:7)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:962757
+    at Hook.eval [as call] (eval at create (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:14:9002), <anonymous>:7:1)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:131569
+    at tryRunOrWebpackError (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:316088)
+    at __webpack_require_module__ (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:131536)
+    at __nested_webpack_require_161494__ (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:130971)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:131828
+    at symbolIterator (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14444)
+    at done (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14824)
+    at Hook.eval [as callAsync] (eval at create (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:14:9224), <anonymous>:15:1)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:130691
+    at symbolIterator (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14402)
+    at timesSync (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:5027)
+    at Object.eachLimit (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14208)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:130251
+    at symbolIterator (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14444)
+    at timesSync (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:5027)
+    at Object.eachLimit (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14208)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:129989
+    at symbolIterator (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14444)
+    at done (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14824)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:129500
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:110351
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:16170
+    at Hook.eval [as callAsync] (eval at create (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:14:9224), <anonymous>:16:1)
+    at Cache.get (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:15945)
+    at ItemCacheFacade.get (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:17292)
+    at Compilation._codeGenerationModule (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:109953)
+    at codeGen (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:129387)
+    at symbolIterator (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14402)
+    at timesSync (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:5027)
+    at Object.eachLimit (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14208)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:129634
+    at processQueue (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:1448710)
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+
+Generated code for /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[15].oneOf[2].use[1]!/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[15].oneOf[2].use[2]!/Users/zfitru/webProj/seeds-of-hope/node_modules/next/font/google/target.css?{"path":"src/app/layout.js","import":"Lora","arguments":[],"variableName":"lora"}
+[00:09:37.415] Server  ERROR    ⨯ src/app/layout.js
+`next/font` error:
+Preload is enabled but no subsets were specified for font `Lora`. Please specify subsets or disable preloading if your intended subset can't be preloaded.
+Available subsets: `cyrillic`, `cyrillic-ext`, `latin`, `latin-ext`, `math`, `symbols`, `vietnamese`
+
+Read more: https://nextjs.org/docs/messages/google-fonts-missing-subsets
+[00:09:37.477] Browser ERROR   src/app/layout.js
+`next/font` error:
+Preload is enabled but no subsets were specified for font `Lora`. Please specify subsets or disable preloading if your intended subset can't be preloaded.
+Available subsets: `cyrillic`, `cyrillic-ext`, `latin`, `latin-ext`, `math`, `symbols`, `vietnamese`
+
+Read more: https://nextjs.org/docs/messages/google-fonts-missing-subsets
+[00:09:40.283] Browser ERROR   src/app/layout.js
+`next/font` error:
+Preload is enabled but no subsets were specified for font `Lora`. Please specify subsets or disable preloading if your intended subset can't be preloaded.
+Available subsets: `cyrillic`, `cyrillic-ext`, `latin`, `latin-ext`, `math`, `symbols`, `vietnamese`
+
+Read more: https://nextjs.org/docs/messages/google-fonts-missing-subsets
+[00:09:40.283] Browser ERROR   src/app/layout.js
+An error occurred in `next/font`.
+
+NextFontError: Preload is enabled but no subsets were specified for font `Lora`. Please specify subsets or disable preloading if your intended subset can't be preloaded.
+Available subsets: `cyrillic`, `cyrillic-ext`, `latin`, `latin-ext`, `math`, `symbols`, `vietnamese`
+
+Read more: https://nextjs.org/docs/messages/google-fonts-missing-subsets
+    at nextFontError (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/@next/font/dist/next-font-error.js:8:17)
+    at validateGoogleFontFunctionCall (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/@next/font/dist/google/validate-google-font-function-call.js:29:49)
+    at nextFontGoogleFontLoader (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/@next/font/dist/google/loader.js:60:207)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js:90:155
+    at Span.traceAsyncFn (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/trace/trace.js:157:26)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js:90:138
+    at Span.traceAsyncFn (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/trace/trace.js:157:26)
+    at Object.nextFontLoader (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js:23:31)
+    at tryRunOrWebpackError (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:316134)
+    at __webpack_require_module__ (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:131536)
+    at __nested_webpack_require_161494__ (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:130971)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:131828
+    at symbolIterator (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14444)
+    at done (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14824)
+    at Hook.eval [as callAsync] (eval at create (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:14:9224), <anonymous>:15:1)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:130691
+    at symbolIterator (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14402)
+    at timesSync (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:5027)
+    at Object.eachLimit (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14208)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:130251
+    at symbolIterator (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14444)
+    at timesSync (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:5027)
+    at Object.eachLimit (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14208)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:129989
+    at symbolIterator (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14444)
+    at done (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14824)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:129500
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:110335
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:315970
+    at _done (eval at create (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:14:9224), <anonymous>:9:1)
+    at Hook.eval [as callAsync] (eval at create (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:14:9224), <anonymous>:39:22)
+    at Cache.store (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:16216)
+    at ItemCacheFacade.store (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:17460)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:110322
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:16081
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:15642
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:549076
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:16111
+    at eval (eval at create (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:14:9224), <anonymous>:30:1)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+-- inner error --
+NextFontError: Preload is enabled but no subsets were specified for font `Lora`. Please specify subsets or disable preloading if your intended subset can't be preloaded.
+Available subsets: `cyrillic`, `cyrillic-ext`, `latin`, `latin-ext`, `math`, `symbols`, `vietnamese`
+
+Read more: https://nextjs.org/docs/messages/google-fonts-missing-subsets
+    at nextFontError (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/@next/font/dist/next-font-error.js:8:17)
+    at validateGoogleFontFunctionCall (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/@next/font/dist/google/validate-google-font-function-call.js:29:49)
+    at nextFontGoogleFontLoader (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/@next/font/dist/google/loader.js:60:207)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js:90:155
+    at Span.traceAsyncFn (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/trace/trace.js:157:26)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js:90:138
+    at Span.traceAsyncFn (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/trace/trace.js:157:26)
+    at Object.nextFontLoader (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js:23:31)
+    at Object.<anonymous> (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[15].oneOf[2].use[1]!/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[15].oneOf[2].use[2]!/Users/zfitru/webProj/seeds-of-hope/node_modules/next/font/google/target.css?{"path":"src/app/layout.js","import":"Lora","arguments":[{}],"variableName":"lora"}:1:7)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:962757
+    at Hook.eval [as call] (eval at create (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:14:9002), <anonymous>:7:1)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:131569
+    at tryRunOrWebpackError (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:316088)
+    at __webpack_require_module__ (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:131536)
+    at __nested_webpack_require_161494__ (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:130971)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:131828
+    at symbolIterator (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14444)
+    at done (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14824)
+    at Hook.eval [as callAsync] (eval at create (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:14:9224), <anonymous>:15:1)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:130691
+    at symbolIterator (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14402)
+    at timesSync (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:5027)
+    at Object.eachLimit (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14208)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:130251
+    at symbolIterator (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14444)
+    at timesSync (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:5027)
+    at Object.eachLimit (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14208)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:129989
+    at symbolIterator (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14444)
+    at done (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14824)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:129500
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:110335
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:315970
+    at _done (eval at create (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:14:9224), <anonymous>:9:1)
+    at Hook.eval [as callAsync] (eval at create (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:14:9224), <anonymous>:39:22)
+    at Cache.store (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:16216)
+    at ItemCacheFacade.store (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:17460)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:110322
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:16081
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:15642
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:549076
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:16111
+    at eval (eval at create (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:14:9224), <anonymous>:30:1)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+Generated code for /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[15].oneOf[2].use[1]!/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[15].oneOf[2].use[2]!/Users/zfitru/webProj/seeds-of-hope/node_modules/next/font/google/target.css?{"path":"src/app/layout.js","import":"Lora","arguments":[{}],"variableName":"lora"}
+[00:09:40.382] Server  ERROR    ⨯ ./src/app/layout.js
+Error:   × Expression expected
+    ╭─[/Users/zfitru/webProj/seeds-of-hope/src/app/layout.js:16:1]
+ 13 │ 
+ 14 │ const lora = Lora({
+ 15 │   subsets:
+ 16 │ })
+    · ─
+ 17 │ 
+ 18 │ export const metadata = {
+ 19 │   title: "Seeds of Hope",
+    ╰────
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/layout.js
+[00:09:40.429] Browser ERROR   ./src/app/layout.js
+Error:   × Expression expected
+    ╭─[/Users/zfitru/webProj/seeds-of-hope/src/app/layout.js:16:1]
+ 13 │ 
+ 14 │ const lora = Lora({
+ 15 │   subsets:
+ 16 │ })
+    · ─
+ 17 │ 
+ 18 │ export const metadata = {
+ 19 │   title: "Seeds of Hope",
+    ╰────
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/layout.js
+[00:09:44.452] Browser ERROR   src/app/layout.js
+`next/font` error:
+Unknown subset `` for font `Lora`.
+Available subsets: `cyrillic`, `cyrillic-ext`, `latin`, `latin-ext`, `math`, `symbols`, `vietnamese`
+[00:09:44.740] Server  ERROR    ⨯ src/app/layout.js
+`next/font` error:
+Unknown subset `` for font `Lora`.
+Available subsets: `cyrillic`, `cyrillic-ext`, `latin`, `latin-ext`, `math`, `symbols`, `vietnamese`
+[00:09:44.956] Browser ERROR   src/app/layout.js
+`next/font` error:
+Unknown subset `` for font `Lora`.
+Available subsets: `cyrillic`, `cyrillic-ext`, `latin`, `latin-ext`, `math`, `symbols`, `vietnamese`
+[00:09:44.957] Browser ERROR   src/app/layout.js
+An error occurred in `next/font`.
+
+NextFontError: Unknown subset `` for font `Lora`.
+Available subsets: `cyrillic`, `cyrillic-ext`, `latin`, `latin-ext`, `math`, `symbols`, `vietnamese`
+    at nextFontError (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/@next/font/dist/next-font-error.js:8:17)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/@next/font/dist/google/validate-google-font-function-call.js:33:53
+    at Array.forEach (<anonymous>)
+    at validateGoogleFontFunctionCall (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/@next/font/dist/google/validate-google-font-function-call.js:31:17)
+    at nextFontGoogleFontLoader (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/@next/font/dist/google/loader.js:60:207)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js:90:155
+    at Span.traceAsyncFn (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/trace/trace.js:157:26)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js:90:138
+    at Span.traceAsyncFn (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/trace/trace.js:157:26)
+    at Object.nextFontLoader (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js:23:31)
+    at tryRunOrWebpackError (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:316134)
+    at __webpack_require_module__ (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:131536)
+    at __nested_webpack_require_161494__ (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:130971)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:131828
+    at symbolIterator (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14444)
+    at done (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14824)
+    at Hook.eval [as callAsync] (eval at create (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:14:9224), <anonymous>:15:1)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:130691
+    at symbolIterator (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14402)
+    at timesSync (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:5027)
+    at Object.eachLimit (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14208)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:130251
+    at symbolIterator (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14444)
+    at timesSync (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:5027)
+    at Object.eachLimit (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14208)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:129989
+    at symbolIterator (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14444)
+    at done (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14824)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:129500
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:110335
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:315970
+    at _done (eval at create (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:14:9224), <anonymous>:9:1)
+    at Hook.eval [as callAsync] (eval at create (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:14:9224), <anonymous>:39:22)
+    at Cache.store (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:16216)
+    at ItemCacheFacade.store (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:17460)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:110322
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:16081
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:15642
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:549076
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:16111
+    at eval (eval at create (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:14:9224), <anonymous>:30:1)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+-- inner error --
+NextFontError: Unknown subset `` for font `Lora`.
+Available subsets: `cyrillic`, `cyrillic-ext`, `latin`, `latin-ext`, `math`, `symbols`, `vietnamese`
+    at nextFontError (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/@next/font/dist/next-font-error.js:8:17)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/@next/font/dist/google/validate-google-font-function-call.js:33:53
+    at Array.forEach (<anonymous>)
+    at validateGoogleFontFunctionCall (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/@next/font/dist/google/validate-google-font-function-call.js:31:17)
+    at nextFontGoogleFontLoader (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/@next/font/dist/google/loader.js:60:207)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js:90:155
+    at Span.traceAsyncFn (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/trace/trace.js:157:26)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js:90:138
+    at Span.traceAsyncFn (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/trace/trace.js:157:26)
+    at Object.nextFontLoader (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js:23:31)
+    at Object.<anonymous> (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[15].oneOf[2].use[1]!/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[15].oneOf[2].use[2]!/Users/zfitru/webProj/seeds-of-hope/node_modules/next/font/google/target.css?{"path":"src/app/layout.js","import":"Lora","arguments":[{"subsets":[""]}],"variableName":"lora"}:1:7)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:962757
+    at Hook.eval [as call] (eval at create (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:14:9002), <anonymous>:7:1)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:131569
+    at tryRunOrWebpackError (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:316088)
+    at __webpack_require_module__ (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:131536)
+    at __nested_webpack_require_161494__ (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:130971)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:131828
+    at symbolIterator (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14444)
+    at done (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14824)
+    at Hook.eval [as callAsync] (eval at create (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:14:9224), <anonymous>:15:1)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:130691
+    at symbolIterator (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14402)
+    at timesSync (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:5027)
+    at Object.eachLimit (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14208)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:130251
+    at symbolIterator (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14444)
+    at timesSync (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:5027)
+    at Object.eachLimit (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14208)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:129989
+    at symbolIterator (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14444)
+    at done (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/neo-async/async.js:1:14824)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:129500
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:110335
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:315970
+    at _done (eval at create (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:14:9224), <anonymous>:9:1)
+    at Hook.eval [as callAsync] (eval at create (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:14:9224), <anonymous>:39:22)
+    at Cache.store (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:16216)
+    at ItemCacheFacade.store (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:17460)
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:110322
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:16081
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:15642
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:549076
+    at /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:29:16111
+    at eval (eval at create (/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/compiled/webpack/bundle5.js:14:9224), <anonymous>:30:1)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+Generated code for /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[15].oneOf[2].use[1]!/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[15].oneOf[2].use[2]!/Users/zfitru/webProj/seeds-of-hope/node_modules/next/font/google/target.css?{"path":"src/app/layout.js","import":"Lora","arguments":[{"subsets":[""]}],"variableName":"lora"}
+[00:09:53.266] Server  ERROR    ⨯ ./src/app/layout.js
+Error:   × Expression expected
+    ╭─[/Users/zfitru/webProj/seeds-of-hope/src/app/layout.js:17:1]
+ 14 │ const lora = Lora({
+ 15 │   subsets: ["latin"],
+ 16 │   variable: 
+ 17 │ })
+    · ─
+ 18 │ 
+ 19 │ export const metadata = {
+ 20 │   title: "Seeds of Hope",
+    ╰────
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/layout.js
+[00:09:53.325] Browser ERROR   ./src/app/layout.js
+Error:   × Expression expected
+    ╭─[/Users/zfitru/webProj/seeds-of-hope/src/app/layout.js:17:1]
+ 14 │ const lora = Lora({
+ 15 │   subsets: ["latin"],
+ 16 │   variable: 
+ 17 │ })
+    · ─
+ 18 │ 
+ 19 │ export const metadata = {
+ 20 │   title: "Seeds of Hope",
+    ╰────
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/layout.js
+[00:10:20.887] Browser ERROR   ./src/app/layout.js
+Error:   × Expected '</', got '}'
+    ╭─[/Users/zfitru/webProj/seeds-of-hope/src/app/layout.js:28:1]
+ 25 │   return (
+ 26 │     <html lang="en">
+ 27 │       <body
+ 28 │         className={`${geistSans.variable} ${geistMono.variable} ${} antialiased`}
+    ·                                                                   ─
+ 29 │       >
+ 30 │         {children}
+ 31 │       </body>
+    ╰────
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/layout.js
+[00:10:20.917] Server  ERROR    ⨯ ./src/app/layout.js
+Error:   × Expected '</', got '}'
+    ╭─[/Users/zfitru/webProj/seeds-of-hope/src/app/layout.js:28:1]
+ 25 │   return (
+ 26 │     <html lang="en">
+ 27 │       <body
+ 28 │         className={`${geistSans.variable} ${geistMono.variable} ${} antialiased`}
+    ·                                                                   ─
+ 29 │       >
+ 30 │         {children}
+ 31 │       </body>
+    ╰────
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/layout.js
+[00:10:23.098] Server  ERROR    ⨯ ./src/app/layout.js
+Error:   × Expected '</', got '}'
+    ╭─[/Users/zfitru/webProj/seeds-of-hope/src/app/layout.js:28:1]
+ 25 │   return (
+ 26 │     <html lang="en">
+ 27 │       <body
+ 28 │         className={`${geistSans.variable} ${geistMono.variable} ${lora.} antialiased`}
+    ·                                                                        ─
+ 29 │       >
+ 30 │         {children}
+ 31 │       </body>
+    ╰────
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/layout.js
+[00:10:23.125] Browser ERROR   ./src/app/layout.js
+Error:   × Expected '</', got '}'
+    ╭─[/Users/zfitru/webProj/seeds-of-hope/src/app/layout.js:28:1]
+ 25 │   return (
+ 26 │     <html lang="en">
+ 27 │       <body
+ 28 │         className={`${geistSans.variable} ${geistMono.variable} ${lora.} antialiased`}
+    ·                                                                        ─
+ 29 │       >
+ 30 │         {children}
+ 31 │       </body>
+    ╰────
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/layout.js
+[00:11:01.103] Server  ERROR    ⨯ ./src/app/globals.css:28:1
+Syntax error: /Users/zfitru/webProj/seeds-of-hope/src/app/globals.css Unknown word
+
+  26 | }
+  27 | 
+> 28 | h1, h2, h3, h4, h
+     | ^
+[00:11:01.152] Browser ERROR   ./src/app/globals.css:28:1
+Syntax error: /Users/zfitru/webProj/seeds-of-hope/src/app/globals.css Unknown word
+
+  26 | }
+  27 | 
+> 28 | h1, h2, h3, h4, h
+     | ^
+[00:11:01.152] Browser ERROR   ./src/app/globals.css
+Syntax error: /Users/zfitru/webProj/seeds-of-hope/src/app/globals.css Unknown word (28:1)
+
+  26 | }
+  27 | 
+> 28 | h1, h2, h3, h4, h
+     | ^
+-- inner error --
+Syntax error: /Users/zfitru/webProj/seeds-of-hope/src/app/globals.css Unknown word (28:1)
+
+  26 | }
+  27 | 
+> 28 | h1, h2, h3, h4, h
+     | ^
+Generated code for /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[15].oneOf[10].use[2]!/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[15].oneOf[10].use[3]!/Users/zfitru/webProj/seeds-of-hope/src/app/globals.css
+
+Import trace for requested module:
+./src/app/globals.css
+[00:11:02.312] Browser ERROR   uncaughtError: Error: Syntax error: /Users/zfitru/webProj/seeds-of-hope/src/app/globals.css Unknown word
+
+  26 | }
+  27 | 
+> 28 | h1, h2, h3, h4, h
+     | ^
+
+[00:11:02.777] Server  ERROR    ⨯ ./src/app/globals.css:28:1
+Syntax error: /Users/zfitru/webProj/seeds-of-hope/src/app/globals.css Unknown word
+
+  26 | }
+  27 | 
+> 28 | h1, h2, h3, h4, h5 
+     | ^
+[00:11:02.779] Browser ERROR   ./src/app/globals.css:28:1
+Syntax error: /Users/zfitru/webProj/seeds-of-hope/src/app/globals.css Unknown word
+
+  26 | }
+  27 | 
+> 28 | h1, h2, h3, h4, h
+     | ^
+[00:11:02.779] Browser ERROR   ./src/app/globals.css
+Syntax error: /Users/zfitru/webProj/seeds-of-hope/src/app/globals.css Unknown word (28:1)
+
+  26 | }
+  27 | 
+> 28 | h1, h2, h3, h4, h
+     | ^
+-- inner error --
+Syntax error: /Users/zfitru/webProj/seeds-of-hope/src/app/globals.css Unknown word (28:1)
+
+  26 | }
+  27 | 
+> 28 | h1, h2, h3, h4, h
+     | ^
+Generated code for /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[15].oneOf[10].use[2]!/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[15].oneOf[10].use[3]!/Users/zfitru/webProj/seeds-of-hope/src/app/globals.css
+[00:11:02.957] Browser ERROR   ./src/app/globals.css:28:1
+Syntax error: /Users/zfitru/webProj/seeds-of-hope/src/app/globals.css Unknown word
+
+  26 | }
+  27 | 
+> 28 | h1, h2, h3, h4, h5 
+     | ^
+[00:11:02.957] Browser ERROR   ./src/app/globals.css
+Syntax error: /Users/zfitru/webProj/seeds-of-hope/src/app/globals.css Unknown word (28:1)
+
+  26 | }
+  27 | 
+> 28 | h1, h2, h3, h4, h
+     | ^
+-- inner error --
+Syntax error: /Users/zfitru/webProj/seeds-of-hope/src/app/globals.css Unknown word (28:1)
+
+  26 | }
+  27 | 
+> 28 | h1, h2, h3, h4, h
+     | ^
+Generated code for /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[15].oneOf[10].use[2]!/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[15].oneOf[10].use[3]!/Users/zfitru/webProj/seeds-of-hope/src/app/globals.css
+
+Import trace for requested module:
+./src/app/globals.css
+[00:11:03.377] Browser ERROR   uncaughtError: Error: Syntax error: /Users/zfitru/webProj/seeds-of-hope/src/app/globals.css Unknown word
+
+  26 | }
+  27 | 
+> 28 | h1, h2, h3, h4, h5 
+     | ^
+
+[00:11:03.590] Browser ERROR   ./src/app/globals.css:28:1
+Syntax error: /Users/zfitru/webProj/seeds-of-hope/src/app/globals.css Unknown word
+
+  26 | }
+  27 | 
+> 28 | h1, h2, h3, h4, h5 
+     | ^
+[00:11:03.591] Browser ERROR   ./src/app/globals.css
+Syntax error: /Users/zfitru/webProj/seeds-of-hope/src/app/globals.css Unknown word (28:1)
+
+  26 | }
+  27 | 
+> 28 | h1, h2, h3, h4, h
+     | ^
+-- inner error --
+Syntax error: /Users/zfitru/webProj/seeds-of-hope/src/app/globals.css Unknown word (28:1)
+
+  26 | }
+  27 | 
+> 28 | h1, h2, h3, h4, h
+     | ^
+Generated code for /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[15].oneOf[10].use[2]!/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[15].oneOf[10].use[3]!/Users/zfitru/webProj/seeds-of-hope/src/app/globals.css
+[00:11:07.724] Server  ERROR    ⨯ ./src/app/globals.css:29:3
+Syntax error: /Users/zfitru/webProj/seeds-of-hope/src/app/globals.css Unknown word
+
+  27 | 
+  28 | h1, h2, h3, h4, h5 {
+> 29 |   font
+     |   ^
+  30 | }
+[00:11:08.314] Browser ERROR   uncaughtError: Error: Syntax error: /Users/zfitru/webProj/seeds-of-hope/src/app/globals.css Unknown word
+
+  27 | 
+  28 | h1, h2, h3, h4, h5 {
+> 29 |   font
+     |   ^
+  30 | }
+
+[00:11:08.527] Browser ERROR   ./src/app/globals.css:29:3
+Syntax error: /Users/zfitru/webProj/seeds-of-hope/src/app/globals.css Unknown word
+
+  27 | 
+  28 | h1, h2, h3, h4, h5 {
+> 29 |   font
+     |   ^
+  30 | }
+[00:11:08.528] Browser ERROR   ./src/app/globals.css
+Syntax error: /Users/zfitru/webProj/seeds-of-hope/src/app/globals.css Unknown word (28:1)
+
+  26 | }
+  27 | 
+> 28 | h1, h2, h3, h4, h
+     | ^
+-- inner error --
+Syntax error: /Users/zfitru/webProj/seeds-of-hope/src/app/globals.css Unknown word (28:1)
+
+  26 | }
+  27 | 
+> 28 | h1, h2, h3, h4, h
+     | ^
+Generated code for /Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[15].oneOf[10].use[2]!/Users/zfitru/webProj/seeds-of-hope/node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[15].oneOf[10].use[3]!/Users/zfitru/webProj/seeds-of-hope/src/app/globals.css
+[00:11:09.973] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.

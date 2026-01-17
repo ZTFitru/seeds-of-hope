@@ -1,0 +1,7 @@
+{
+  "/eventaccess/page": "app/eventaccess/page.js",
+  "/charities/page": "app/charities/page.js",
+  "/ourteam/page": "app/ourteam/page.js",
+  "/media/page": "app/media/page.js",
+  "/page": "app/page.js"
+}
