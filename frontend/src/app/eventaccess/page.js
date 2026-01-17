@@ -9,7 +9,18 @@ export default function EventAcess() {
             <Header />
 
             <main className="flex flex-col items-center flex-1 px-4 py-20">
-                <h1 className="text-4xl font-bold text-gray-900 mb-12 text-center">
+                <h1 className="text-4xl font-bold text-gray-900 mb-16">
+                    Event Access
+                </h1>
+                <p className="text-lg text-gray-600 mb-8 max-w-xl">
+                    We are preparing something special for our upcoming events.
+                    Please come back soon.
+                </p>
+
+                <span className="text-gray-500 text-sm">
+                    Coming Soon...
+                </span>
+                {/* <h1 className="text-4xl font-bold text-gray-900 mb-12 text-center">
                     Event Access
                 </h1>
                 <p className="text-lg text-gray-600 mb-12 max-w-2xl text-center">
@@ -24,11 +35,11 @@ export default function EventAcess() {
                     <p className="text-sm text-yellow-700 mt-1">
                         Alcohol will be served at this event. Valid ID will be required at entry.
                     </p>
-                </div>
+                </div> */}
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full max-w-5xl">
+                {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full max-w-5xl"> */}
                     {/* regular ticket */}
-                    <div className="bg-white rounded-lg shadow-lg p-8 flex flex-col">
+                    {/* <div className="bg-white rounded-lg shadow-lg p-8 flex flex-col">
                         <h2 className="text-2xl font-semibold text-gray-900 mb-4">
                             General Admission
                         </h2>
@@ -48,10 +59,10 @@ export default function EventAcess() {
                                 Purchase General Ticket
                             </button>
                         </div>
-                    </div>
+                    </div> */}
 
                     {/* VIP ticket */}
-                    <div className="bg-white rounded-lg shadow-lg p-8 flex flex-col border-2 border-yellow-400">
+                    {/* <div className="bg-white rounded-lg shadow-lg p-8 flex flex-col border-2 border-yellow-400">
                         <h2 className="text-2xl font-semibold text-gray-900 mb-4">
                             VIP Admission
                         </h2>
@@ -64,17 +75,6 @@ export default function EventAcess() {
                             <li>&#8226; Reserved VIP seating</li>
                         </ul>
 
-                        {/* catered dinner */}
-                        {/* <div className="mb-6 text-left">
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
-                                Catered Dinner:
-                            </label>
-                            <select 
-                                className="w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-2 focus:ring-yellow-500 focus:outline-none" defaultValue="no">
-                                    <option value="no">No, I do not want the catered dinner</option>
-                                    <option value="yes">Yes, I want the catered dinner</option>
-                            </select>
-                        </div> */}
                         <div className="mb-6 flex items-center gap-3">
                             <input
                                 type="checkbox"
@@ -97,7 +97,7 @@ export default function EventAcess() {
                             </button>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </main>
 
             
