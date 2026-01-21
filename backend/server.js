@@ -5,6 +5,7 @@ require('dotenv').config();
 const contactRoutes = require('./routes/contact');
 const donationRoutes = require('./routes/donations');
 const ticketRoutes = require('./routes/tickets');
+const ticketOrderRoutes = require('./routes/ticketOrders');
 const paypalWebhookRoutes = require('./routes/paypalWebhook');
 const { sequelize, testConnection, syncDatabase } = require('./config/database');
 const models = require('./models');
@@ -97,6 +98,10 @@ if (process.env.NODE_ENV === 'development') {
 // Ticket routes
 app.use('/api/tickets', ticketRoutes);
 app.use('/backend/api/tickets', ticketRoutes);
+
+// Ticket order routes
+app.use('/api/ticket-orders', ticketOrderRoutes);
+app.use('/backend/api/ticket-orders', ticketOrderRoutes);
 
 // PayPal webhook (needs raw body for signature verification)
 app.use('/api/paypal', paypalWebhookRoutes);

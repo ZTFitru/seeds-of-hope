@@ -60,7 +60,7 @@ async function initializeDatabase() {
     });
 
     // Expected tables
-    const expectedTables = ['users', 'events', 'event_speakers', 'tickets', 'donations'];
+    const expectedTables = ['users', 'events', 'event_speakers', 'tickets', 'donations', 'ticket_orders'];
     const missingTables = expectedTables.filter(table => !tableNames.includes(table));
     
     if (missingTables.length > 0) {

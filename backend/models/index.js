@@ -3,6 +3,7 @@ const Event = require('./Event');
 const EventSpeaker = require('./EventSpeaker');
 const Ticket = require('./Ticket');
 const Donation = require('./Donation');
+const TicketOrder = require('./TicketOrder');
 
 // Define relationships
 
@@ -54,10 +55,24 @@ Donation.belongsTo(User, {
   required: false
 });
 
+// Ticket <-> TicketOrder (One-to-One, optional)
+// A ticket order can be linked to a ticket after payment
+Ticket.hasOne(TicketOrder, {
+  foreignKey: 'ticketId',
+  as: 'order',
+  onDelete: 'SET NULL'
+});
+TicketOrder.belongsTo(Ticket, {
+  foreignKey: 'ticketId',
+  as: 'ticket',
+  required: false
+});
+
 module.exports = {
   User,
   Event,
   EventSpeaker,
   Ticket,
-  Donation
+  Donation,
+  TicketOrder
 };
