@@ -105,8 +105,18 @@ router.get('/total', async (req, res) => {
  * Create a PayPal order for a donation
  */
 router.post('/create', donationValidation, handleValidationErrors, async (req, res) => {
+  let donation = null;
   try {
     const { amount, email, name, isAnonymous, requestTaxReceipt, message, donationType, userId } = req.body;
+
+    console.log('Creating donation order with data:', {
+      amount,
+      email: email ? 'provided' : 'not provided',
+      name: name ? 'provided' : 'not provided',
+      isAnonymous,
+      requestTaxReceipt,
+      donationType
+    });
 
     // Validate that if tax receipt is requested, name and email are provided
     if (requestTaxReceipt) {
@@ -119,37 +129,86 @@ router.post('/create', donationValidation, handleValidationErrors, async (req, r
     }
 
     // Create donation record with pending status
-    const donation = await Donation.create({
-      amount: parseFloat(amount),
-      email: email || null,
-      name: isAnonymous ? null : (name || null),
-      userId: userId || null,
-      isAnonymous: isAnonymous || false,
-      requestTaxReceipt: requestTaxReceipt || false,
-      message: message || null,
-      donationType: donationType || 'one-time',
-      paymentStatus: 'pending',
-      paymentProcessor: 'paypal'
-    });
+    try {
+      donation = await Donation.create({
+        amount: parseFloat(amount),
+        email: email || null,
+        name: isAnonymous ? null : (name || null),
+        userId: userId || null,
+        isAnonymous: isAnonymous || false,
+        requestTaxReceipt: requestTaxReceipt || false,
+        message: message || null,
+        donationType: donationType || 'one-time',
+        paymentStatus: 'pending',
+        paymentProcessor: 'paypal'
+      });
+      console.log('Donation record created successfully:', donation.id);
+    } catch (dbError) {
+      console.error('Database error creating donation:', {
+        message: dbError.message,
+        name: dbError.name,
+        stack: dbError.stack,
+        errors: dbError.errors
+      });
+      throw new Error(`Database error: ${dbError.message}`);
+    }
 
     // Create PayPal order
     const baseUrl = process.env.BASE_URL || process.env.FRONTEND_URL || 'http://localhost:3000';
     const returnUrl = `${baseUrl}/donation/success?donationId=${donation.id}`;
     const cancelUrl = `${baseUrl}/donation/cancel?donationId=${donation.id}`;
 
-    const orderResult = await paypalService.createOrder({
+    console.log('Creating PayPal order with:', {
       amount: parseFloat(amount),
-      currency: 'USD',
-      description: `Donation to Seeds of Hope${donationType && donationType !== 'one-time' ? ` (${donationType})` : ''}`,
       returnUrl,
       cancelUrl,
-      customId: `donation-${donation.id}`
+      donationId: donation.id
     });
 
+    let orderResult;
+    try {
+      orderResult = await paypalService.createOrder({
+        amount: parseFloat(amount),
+        currency: 'USD',
+        description: `Donation to Seeds of Hope${donationType && donationType !== 'one-time' ? ` (${donationType})` : ''}`,
+        returnUrl,
+        cancelUrl,
+        customId: `donation-${donation.id}`
+      });
+      console.log('PayPal order created successfully:', orderResult.orderId);
+    } catch (paypalError) {
+      console.error('PayPal order creation error:', {
+        message: paypalError.message,
+        name: paypalError.name,
+        stack: paypalError.stack
+      });
+      // If PayPal fails, try to clean up the donation record
+      if (donation) {
+        try {
+          await donation.destroy();
+          console.log('Cleaned up donation record after PayPal error');
+        } catch (cleanupError) {
+          console.error('Error cleaning up donation record:', cleanupError.message);
+        }
+      }
+      throw new Error(`PayPal error: ${paypalError.message}`);
+    }
+
     // Update donation with PayPal order ID
-    await donation.update({
-      paypalOrderId: orderResult.orderId
-    });
+    try {
+      await donation.update({
+        paypalOrderId: orderResult.orderId
+      });
+      console.log('Donation updated with PayPal order ID');
+    } catch (updateError) {
+      console.error('Error updating donation with PayPal order ID:', {
+        message: updateError.message,
+        donationId: donation.id,
+        orderId: orderResult.orderId
+      });
+      // Don't fail the request if update fails - order is still created
+      // But log it for investigation
+    }
 
     res.status(200).json({
       success: true,
@@ -159,11 +218,29 @@ router.post('/create', donationValidation, handleValidationErrors, async (req, r
       message: 'Donation order created successfully. Redirect user to approvalUrl to complete payment.'
     });
   } catch (error) {
-    console.error('Donation creation error:', error);
+    console.error('Donation creation error:', {
+      message: error.message,
+      name: error.name,
+      stack: error.stack,
+      donationId: donation?.id || null
+    });
+    
+    // Provide more helpful error message
+    let errorMessage = 'Failed to create donation order';
+    if (error.message.includes('Database error')) {
+      errorMessage = 'Database error while creating donation. Please check server logs.';
+    } else if (error.message.includes('PayPal error')) {
+      errorMessage = 'PayPal service error. Please check PayPal configuration and credentials.';
+    } else if (error.message.includes('credentials')) {
+      errorMessage = 'PayPal credentials not configured. Please check environment variables.';
+    }
+    
     res.status(500).json({
       success: false,
-      message: 'Failed to create donation order',
-      error: process.env.NODE_ENV === 'development' ? error.message : undefined
+      message: errorMessage,
+      error: process.env.NODE_ENV === 'development' ? error.message : undefined,
+      // Include error type in production for better debugging
+      errorType: error.name || 'UnknownError'
     });
   }
 });

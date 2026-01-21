@@ -9,37 +9,90 @@ const { client } = require('../config/paypal');
 async function createOrder(orderData) {
   const { amount, currency = 'USD', description, returnUrl, cancelUrl, customId } = orderData;
 
-  const request = new paypal.orders.OrdersCreateRequest();
-  request.prefer('return=representation');
-  request.requestBody({
-    intent: 'CAPTURE',
-    purchase_units: [{
-      amount: {
-        currency_code: currency,
-        value: amount.toFixed(2)
-      },
-      description: description || 'Payment',
-      custom_id: customId || null
-    }],
-    application_context: {
-      brand_name: process.env.PAYPAL_BRAND_NAME || 'Seeds of Hope',
-      landing_page: 'BILLING',
-      user_action: 'PAY_NOW',
-      return_url: returnUrl,
-      cancel_url: cancelUrl
-    }
-  });
+  // Validate amount
+  const numericAmount = typeof amount === 'number' ? amount : parseFloat(amount);
+  if (isNaN(numericAmount) || numericAmount <= 0) {
+    throw new Error(`Invalid amount: ${amount}. Amount must be a positive number.`);
+  }
+
+  // Validate required URLs
+  if (!returnUrl || !cancelUrl) {
+    throw new Error('returnUrl and cancelUrl are required for PayPal order creation');
+  }
+
+  // Validate PayPal client can be initialized
+  let paypalClient;
+  try {
+    paypalClient = client();
+  } catch (clientError) {
+    console.error('PayPal client initialization error:', clientError);
+    throw new Error(`PayPal client initialization failed: ${clientError.message}`);
+  }
 
   try {
-    const order = await client().execute(request);
+    const request = new paypal.orders.OrdersCreateRequest();
+    request.prefer('return=representation');
+    request.requestBody({
+      intent: 'CAPTURE',
+      purchase_units: [{
+        amount: {
+          currency_code: currency,
+          value: numericAmount.toFixed(2)
+        },
+        description: description || 'Payment',
+        custom_id: customId || null
+      }],
+      application_context: {
+        brand_name: process.env.PAYPAL_BRAND_NAME || 'Seeds of Hope',
+        landing_page: 'BILLING',
+        user_action: 'PAY_NOW',
+        return_url: returnUrl,
+        cancel_url: cancelUrl
+      }
+    });
+
+    const order = await paypalClient.execute(request);
+    
+    // Validate response structure
+    if (!order || !order.result) {
+      throw new Error('Invalid response from PayPal API: missing result');
+    }
+
+    if (!order.result.id) {
+      throw new Error('Invalid response from PayPal API: missing order ID');
+    }
+
+    const approveLink = order.result.links?.find(link => link.rel === 'approve');
+    if (!approveLink || !approveLink.href) {
+      throw new Error('Invalid response from PayPal API: missing approval URL');
+    }
+
     return {
       success: true,
       orderId: order.result.id,
-      approvalUrl: order.result.links.find(link => link.rel === 'approve').href,
+      approvalUrl: approveLink.href,
       order: order.result
     };
   } catch (error) {
-    console.error('PayPal order creation error:', error);
+    console.error('PayPal order creation error:', {
+      message: error.message,
+      name: error.name,
+      stack: error.stack,
+      statusCode: error.statusCode,
+      details: error.details || error.response?.body || error
+    });
+    
+    // Provide more specific error messages
+    if (error.message.includes('credentials') || error.message.includes('authentication')) {
+      throw new Error('PayPal authentication failed. Please check PAYPAL_CLIENT_ID and PAYPAL_CLIENT_SECRET.');
+    } else if (error.statusCode === 401) {
+      throw new Error('PayPal authentication failed. Invalid credentials.');
+    } else if (error.statusCode === 400) {
+      throw new Error(`PayPal request validation failed: ${error.message}`);
+    } else if (error.statusCode >= 500) {
+      throw new Error(`PayPal service error (${error.statusCode}). Please try again later.`);
+    }
+    
     throw new Error(`Failed to create PayPal order: ${error.message}`);
   }
 }
