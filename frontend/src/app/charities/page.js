@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Footer from "@/components/Footer"
 import Header from "@/components/Header"
 import { getApiUrl } from "@/utils/apiConfig";
@@ -16,8 +16,34 @@ export default function Charities() {
     const [requestTaxReceipt, setRequestTaxReceipt] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
+    const [donationTotal, setDonationTotal] = useState(0);
+    const [isLoadingTotal, setIsLoadingTotal] = useState(true);
+
+    const STARTING_AMOUNT = 1800;
+    const GOAL_AMOUNT = 170000;
 
     const presetAmounts = [1, 3, 5];
+
+    // Fetch donation total on component mount
+    useEffect(() => {
+        const fetchDonationTotal = async () => {
+            try {
+                setIsLoadingTotal(true);
+                const response = await fetch(getApiUrl('/api/donations/total'));
+                const data = await response.json();
+                
+                if (data.success) {
+                    setDonationTotal(data.totalAmount || 0);
+                }
+            } catch (err) {
+                console.error('Error fetching donation total:', err);
+            } finally {
+                setIsLoadingTotal(false);
+            }
+        };
+
+        fetchDonationTotal();
+    }, []);
 
     const handleAmountSelect = (amount) => {
         setSelectedAmount(amount);
@@ -176,20 +202,16 @@ export default function Charities() {
                     <p className="text-lg text-gray-600 max-w-3xl mx-auto">
                         Your contribution helps us make a difference in our community. Thank you for your support!
                     </p>
-                    <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                        Content coming soon...
-                    </p>
                 </div>
 
-                {/* Donation form - temporarily hidden */}
-                {/* <div className="max-w-2xl mx-auto">
+                <div className="max-w-2xl mx-auto">
                     <div className="bg-white rounded-lg shadow-lg p-8">
                         <h2 className="text-3xl font-bold text-gray-900 mb-2 text-center">
                             Donate Now!
                         </h2>
 
                         {/* Message above donation fields */}
-                        {/* <div className="mb-6 text-gray-700 space-y-3">
+                        <div className="mb-6 text-gray-700 space-y-3">
                             <p>
                                 The Seeds of Hope event is designed to promote a spirit of collaboration, charity, and hope in order to accelerate/strengthen communities around the world.
                             </p>
@@ -202,14 +224,14 @@ export default function Charities() {
                         </div>
 
                         {/* Error message */}
-                        {/* {error && (
+                        {error && (
                             <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
                                 <p className="text-red-800 text-sm">{error}</p>
                             </div>
                         )}
 
                         {/* Donation amount selection */}
-                        {/* <div className="mb-6">
+                        <div className="mb-6">
                             <label className="block text-sm font-semibold text-gray-700 mb-3">
                                 Select Donation Amount
                             </label>
@@ -233,7 +255,7 @@ export default function Charities() {
                             </div>
 
                             {/* Other amount option */}
-                            {/* <button
+                            <button
                                 onClick={() => {
                                     setSelectedAmount('other');
                                     setOtherAmount('');
@@ -251,7 +273,7 @@ export default function Charities() {
                             </button>
 
                             {/* Other amount input */}
-                            {/* {selectedAmount === 'other' && (
+                            {selectedAmount === 'other' && (
                                 <div className="relative">
                                     <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 font-semibold">
                                         $
@@ -271,7 +293,7 @@ export default function Charities() {
                         </div>
 
                         {/* Donor information */}
-                        {/* <div className="mb-6">
+                        <div className="mb-6">
                             <label className="block text-sm font-semibold text-gray-700 mb-3">
                                 Your Information
                             </label>
@@ -320,7 +342,7 @@ export default function Charities() {
                         </div>
 
                         {/* Donate button */}
-                        {/* <button
+                        <button
                             onClick={handleDonate}
                             disabled={isDonateDisabled}
                             className={`w-full px-6 py-4 rounded-lg font-semibold text-lg transition-colors
@@ -337,14 +359,59 @@ export default function Charities() {
                             You will be redirected to PayPal to complete your secure payment.
                         </p>
                     </div>
-                </div>
 
-                {/* Disclaimer */}
-                {/* <div className="max-w-3xl mx-auto mt-8 mb-8">
-                    <p className="text-sm text-gray-600 text-center italic">
-                        <strong>Disclaimer:</strong> Donations may be made anonymously, or for a charitable contribution tax deduction, in which case contact information data will be collected, and the participating 501c3 member of the Seeds of Hope Organizational Team will disperse appropriate letters no later than December 31, 2026.
-                    </p>
-                </div> */}
+                    {/* Donation Tracker */}
+                    <div className="bg-white rounded-lg shadow-lg p-8 mt-8">
+                        <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
+                            Donation Progress
+                        </h2>
+                        
+                        {isLoadingTotal ? (
+                            <div className="text-center py-8">
+                                <p className="text-gray-500">Loading donation progress...</p>
+                            </div>
+                        ) : (
+                            <>
+                                <div className="mb-6">
+                                    <div className="flex justify-between items-center mb-2">
+                                        <span className="text-sm font-semibold text-gray-700">
+                                            Current Total
+                                        </span>
+                                        <span className="text-sm font-semibold text-gray-700">
+                                            Goal: ${GOAL_AMOUNT.toLocaleString()}
+                                        </span>
+                                    </div>
+                                    <div className="w-full bg-gray-200 rounded-full h-8 overflow-hidden">
+                                        <div
+                                            className="bg-green-600 h-8 rounded-full transition-all duration-500 ease-out flex items-center justify-end pr-2"
+                                            style={{
+                                                width: `${Math.min(100, ((donationTotal + STARTING_AMOUNT) / GOAL_AMOUNT) * 100)}%`
+                                            }}
+                                        >
+                                            {(donationTotal + STARTING_AMOUNT) / GOAL_AMOUNT >= 0.1 && (
+                                                <span className="text-white text-xs font-semibold">
+                                                    {Math.round(((donationTotal + STARTING_AMOUNT) / GOAL_AMOUNT) * 100)}%
+                                                </span>
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div className="text-center">
+                                    <p className="text-4xl font-bold text-green-600 mb-2">
+                                        ${(donationTotal + STARTING_AMOUNT).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                                    </p>
+                                    <p className="text-lg text-gray-600">
+                                        of ${GOAL_AMOUNT.toLocaleString()} goal
+                                    </p>
+                                    <p className="text-sm text-gray-500 mt-2">
+                                        ${(GOAL_AMOUNT - donationTotal - STARTING_AMOUNT).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} remaining
+                                    </p>
+                                </div>
+                            </>
+                        )}
+                    </div>
+                </div>
             </div>
             <Footer />
         </div>

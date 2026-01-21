@@ -72,6 +72,35 @@ router.get('/test', (req, res) => {
 });
 
 /**
+ * GET /api/donations/total
+ * Get the total amount of all completed donations
+ */
+router.get('/total', async (req, res) => {
+  try {
+    // Sum all completed donations
+    const result = await Donation.sum('amount', {
+      where: {
+        paymentStatus: 'completed'
+      }
+    });
+
+    const totalAmount = result ? parseFloat(result) : 0;
+
+    res.status(200).json({
+      success: true,
+      totalAmount: totalAmount
+    });
+  } catch (error) {
+    console.error('Get donation total error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to retrieve donation total',
+      error: process.env.NODE_ENV === 'development' ? error.message : undefined
+    });
+  }
+});
+
+/**
  * POST /api/donations/create
  * Create a PayPal order for a donation
  */
