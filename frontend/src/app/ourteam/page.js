@@ -19,9 +19,8 @@ export default function OurTeam() {
     ]
 
     const partners = [
-        // Row 0: 2 team members
+        // Row 0: 1 team members
         {id: 1, image: '/images/R6_16483.jpg', name: 'Eliza Smith', link: 'https://sites.google.com/eternaleventssc.com/home/home'},
-        {id: 3, image: '/images/Jamie_Bonfante_BTSWB_Headshot.jpg', name: 'Jamie Bonfante', link: 'https://btswbonfante.com/'},
         // Row 1: 3 placeholder items
         {id: 6, logo: '/images/IconOnly_Transparent_NoBuffer.png'},
         {id: 7, logo: '/images/IconOnly_Transparent_NoBuffer.png'},
@@ -41,8 +40,8 @@ export default function OurTeam() {
         
         // First row: 2 items
         if (index < partners.length) {
-            rows.push({ cols: 2, items: partners.slice(index, index + 2) })
-            index += 2
+            rows.push({ cols: 1, items: partners.slice(index, index + 1) })
+            index += 1
         }
         
         // Second row: 3 items
