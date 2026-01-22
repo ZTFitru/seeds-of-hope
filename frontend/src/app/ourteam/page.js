@@ -19,18 +19,14 @@ export default function OurTeam() {
     ]
 
     const partners = [
-        // Row 0: 3 team members
+        // Row 0: 2 team members
         {id: 1, image: '/images/R6_16483.jpg', name: 'Eliza Smith', link: 'https://sites.google.com/eternaleventssc.com/home/home'},
-        {id: 2, image: '/images/Maggie_McDermott_MMP_Headshot.JPG', name: 'Maggie McDermott', link: 'https://maggiemaephotos26.mypixieset.com/'},
         {id: 3, image: '/images/Jamie_Bonfante_BTSWB_Headshot.jpg', name: 'Jamie Bonfante', link: 'https://btswbonfante.com/'},
-        // Row 1: 2 placeholder items
-        {id: 4, logo: '/images/IconOnly_Transparent_NoBuffer.png'},
-        {id: 5, logo: '/images/IconOnly_Transparent_NoBuffer.png'},
-        // Row 2: 3 placeholder items
+        // Row 1: 3 placeholder items
         {id: 6, logo: '/images/IconOnly_Transparent_NoBuffer.png'},
         {id: 7, logo: '/images/IconOnly_Transparent_NoBuffer.png'},
         {id: 8, logo: '/images/IconOnly_Transparent_NoBuffer.png'},
-        // Row 3: 5 placeholder items
+        // Row 2: 5 placeholder items
         {id: 9, logo: '/images/IconOnly_Transparent_NoBuffer.png'},
         {id: 10, logo: '/images/IconOnly_Transparent_NoBuffer.png'},
         {id: 11, logo: '/images/IconOnly_Transparent_NoBuffer.png'},
@@ -38,30 +34,24 @@ export default function OurTeam() {
         {id: 13, logo: '/images/IconOnly_Transparent_NoBuffer.png'},
     ]
 
-    // Group partners into rows with hierarchy: row 0 = 3 items, row 1 = 2 items, row 2 = 3 items, row 3 = 5 items, rest = 4 items each
+    // Group partners into rows with hierarchy: row 0 = 2 items, row 1 = 3 items, row 2 = 5 items, rest = 4 items each
     const groupPartnersIntoRows = (partners) => {
         const rows = []
         let index = 0
         
-        // First row: 3 items
-        if (index < partners.length) {
-            rows.push({ cols: 3, items: partners.slice(index, index + 3) })
-            index += 3
-        }
-        
-        // Second row: 2 items
+        // First row: 2 items
         if (index < partners.length) {
             rows.push({ cols: 2, items: partners.slice(index, index + 2) })
             index += 2
         }
         
-        // Third row: 3 items
+        // Second row: 3 items
         if (index < partners.length) {
             rows.push({ cols: 3, items: partners.slice(index, index + 3) })
             index += 3
         }
         
-        // Fourth row: 5 items
+        // Third row: 5 items
         if (index < partners.length) {
             rows.push({ cols: 5, items: partners.slice(index, index + 5) })
             index += 5

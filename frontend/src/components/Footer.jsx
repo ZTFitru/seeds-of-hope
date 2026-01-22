@@ -1,4 +1,4 @@
-import { Instagram, MapPin, Phone, Mail, YoutubeIcon, Facebook } from "lucide-react";
+import { FaInstagram, FaFacebookF, FaYoutube, FaEnvelope } from "react-icons/fa";
 import { getLinkHref } from "@/utils/linkHelper";
 
 export default function Footer() {
@@ -17,14 +17,14 @@ export default function Footer() {
                             crisis through collaborative fundraising, awareness, and action.
                         </p>
                         <div className="flex space-x-4">
-                            <a href="#" className="text-gray-300 hover:text-orange-400 transition-colors">
-                                <Instagram size={20} />
+                            <a href="https://www.instagram.com/seedsofhopesc?igsh=aHpxYjU5YjE0dHc0&utm_source=qr" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-orange-400 transition-colors" aria-label="Instagram">
+                                <FaInstagram size={20} />
                             </a>
-                            <a href="#" target="_blank" className="text-gray-300 hover:text-orange-400 transition-colors">
-                                <Facebook size={20} />
+                            <a href="https://www.facebook.com/profile.php?id=61586757909430" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-orange-400 transition-colors" aria-label="Facebook">
+                                <FaFacebookF size={20} />
                             </a>
-                            <a href="#" className="text-gray-300 hover:text-orange-400 transition-colors">
-                                <YoutubeIcon size={20} />
+                            <a href="https://www.youtube.com/@SeedsofHopeFestival" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-orange-400 transition-colors" aria-label="YouTube">
+                                <FaYoutube size={20} />
                             </a>
                         </div>
                     </div>
@@ -72,8 +72,10 @@ export default function Footer() {
                             {/* take address and phone number off */}
                             
                             <li className="flex items-start">
-                                <Mail size={18} className="mr-2 mt-1 shrink-0" />
-                                <span className="text-gray-300">Email</span>
+                                <a href="mailto:team@seedsofhopesc.org" className="flex items-start text-gray-300 hover:text-orange-400 transition-colors">
+                                    <FaEnvelope size={18} className="mr-2 mt-1 shrink-0" />
+                                    <span>Email</span>
+                                </a>
                             </li>
                         </ul>
                     </div>

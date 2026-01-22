@@ -19,8 +19,8 @@ export default function Charities() {
     const [donationTotal, setDonationTotal] = useState(0);
     const [isLoadingTotal, setIsLoadingTotal] = useState(true);
 
-    const STARTING_AMOUNT = 1800;
-    const GOAL_AMOUNT = 170000;
+    const STARTING_AMOUNT = 18800;
+    const GOAL_AMOUNT = 700000;
 
     const presetAmounts = [1, 3, 5];
 
@@ -229,6 +229,13 @@ export default function Charities() {
                                 <p className="text-red-800 text-sm">{error}</p>
                             </div>
                         )}
+
+                        {/* Disclaimer */}
+                        <div className="max-w-3xl mx-auto mt-8 mb-8">
+                            <p className="text-sm text-gray-600 text-center italic">
+                                <strong>Disclaimer:</strong> Donations may be made anonymously, or for a charitable contribution tax deduction, in which case contact information data will be collected, and the participating 501c3 member of the Seeds of Hope Organizational Team will disperse appropriate letters no later than December 31, 2026.
+                            </p>
+                        </div>
 
                         {/* Donation amount selection */}
                         <div className="mb-6">
