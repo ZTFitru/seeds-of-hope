@@ -19,41 +19,49 @@ export default function OurTeam() {
     ]
 
     const partners = [
-        // Row 0: 1 team members
+        // Row 0: 1 team member
         {id: 1, image: '/images/R6_16483.jpg', name: 'Eliza Smith', link: 'https://sites.google.com/eternaleventssc.com/home/home'},
-        // Row 1: 3 placeholder items
+        // Row 1: 2 placeholder items
         {id: 6, logo: '/images/IconOnly_Transparent_NoBuffer.png'},
         {id: 7, logo: '/images/IconOnly_Transparent_NoBuffer.png'},
+        // Row 2: 3 placeholder items
         {id: 8, logo: '/images/IconOnly_Transparent_NoBuffer.png'},
-        // Row 2: 5 placeholder items
         {id: 9, logo: '/images/IconOnly_Transparent_NoBuffer.png'},
         {id: 10, logo: '/images/IconOnly_Transparent_NoBuffer.png'},
+        // Row 3: 4 placeholder items
         {id: 11, logo: '/images/IconOnly_Transparent_NoBuffer.png'},
         {id: 12, logo: '/images/IconOnly_Transparent_NoBuffer.png'},
         {id: 13, logo: '/images/IconOnly_Transparent_NoBuffer.png'},
+        {id: 14, logo: '/images/IconOnly_Transparent_NoBuffer.png'},
     ]
 
-    // Group partners into rows with hierarchy: row 0 = 2 items, row 1 = 3 items, row 2 = 5 items, rest = 4 items each
+    // Group partners into rows with hierarchy: row 0 = 1 item, row 1 = 2 items, row 2 = 3 items, row 3 = 4 items
     const groupPartnersIntoRows = (partners) => {
         const rows = []
         let index = 0
         
-        // First row: 2 items
+        // First row: 1 item
         if (index < partners.length) {
             rows.push({ cols: 1, items: partners.slice(index, index + 1) })
             index += 1
         }
         
-        // Second row: 3 items
+        // Second row: 2 items
+        if (index < partners.length) {
+            rows.push({ cols: 2, items: partners.slice(index, index + 2) })
+            index += 2
+        }
+        
+        // Third row: 3 items
         if (index < partners.length) {
             rows.push({ cols: 3, items: partners.slice(index, index + 3) })
             index += 3
         }
         
-        // Third row: 5 items
+        // Fourth row: 4 items
         if (index < partners.length) {
-            rows.push({ cols: 5, items: partners.slice(index, index + 5) })
-            index += 5
+            rows.push({ cols: 4, items: partners.slice(index, index + 4) })
+            index += 4
         }
         
         // Subsequent rows: 4 items each
@@ -137,12 +145,12 @@ export default function OurTeam() {
                             <div 
                                 key={rowIndex} 
                                 className={`grid gap-10 items-center ${
-                                    row.cols === 2 
-                                        ? 'grid-cols-2' 
+                                    row.cols === 1 
+                                        ? 'grid-cols-1' 
+                                        : row.cols === 2 
+                                        ? 'grid-cols-1 sm:grid-cols-2' 
                                         : row.cols === 3 
                                         ? 'grid-cols-1 sm:grid-cols-3' 
-                                        : row.cols === 5
-                                        ? 'grid-cols-2 sm:grid-cols-5'
                                         : 'grid-cols-2 sm:grid-cols-4'
                                 }`}
                                 style={{ width: '100%', maxWidth: '100%' }}

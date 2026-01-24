@@ -202,12 +202,12 @@ export default function Charities() {
                     <p className="text-lg text-gray-600 max-w-3xl mx-auto">
                         Your contribution helps us make a difference in our community. Thank you for your support!
                     </p><br /><br />
-                    <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                    <p className="text-lg text-gray-600 max-w-3xl mx-auto" style={{ display: 'none' }}>
                         Please check back soon for more information about our charities and how your donation will be used.
                     </p>
                 </div>
 
-                <div className="max-w-2xl mx-auto" style={{ display: 'none' }}>
+                <div className="max-w-2xl mx-auto">
                     <div className="bg-white rounded-lg shadow-lg p-8">
                         <h2 className="text-3xl font-bold text-gray-900 mb-2 text-center">
                             Donate Now!
