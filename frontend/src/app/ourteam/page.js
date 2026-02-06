@@ -20,7 +20,7 @@ export default function OurTeam() {
 
     const partners = [
         // Row 0: 1 team member
-        {id: 1, image: '/images/R6_16483.jpg', name: 'Eliza Smith', link: 'https://sites.google.com/eternaleventssc.com/home/home'},
+        {id: 1, logo: '/images/IconOnly_Transparent_NoBuffer.png'},
         // Row 1: 2 placeholder items
         {id: 6, logo: '/images/IconOnly_Transparent_NoBuffer.png'},
         {id: 7, logo: '/images/IconOnly_Transparent_NoBuffer.png'},
