@@ -17,9 +17,16 @@ export default function EventAcess() {
                     Please come back soon.
                 </p>
 
-                <span className="text-gray-500 text-sm">
-                    Coming Soon...
-                </span>
+                <div className="w-full max-w-2xl aspect-video mb-8">
+                    <iframe
+                        className="w-full h-full rounded-lg"
+                        src="https://www.youtube.com/embed/laFb-ycib34"
+                        title="YouTube video"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                    />
+                </div>
+
                 {/* <h1 className="text-4xl font-bold text-gray-900 mb-12 text-center">
                     Event Access
                 </h1>

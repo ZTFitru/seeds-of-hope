@@ -86,6 +86,9 @@ export default function Footer() {
                     <p className="text-gray-400 text-sm">
                         &copy; {new Date().getFullYear()} All rights reserved.
                     </p>
+                    <p className="text-gray-400 text-sm">
+                        Website hosting provided by <a href="https://galacticdigitalstudios.com" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-orange-400 transition-colors">Galactic Digital Studios</a>
+                    </p>
                 </div>
             </div>
         </footer>
