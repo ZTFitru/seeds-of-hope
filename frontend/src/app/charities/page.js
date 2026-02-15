@@ -371,7 +371,7 @@ export default function Charities() {
                     </div>
 
                     {/* Donation Tracker */}
-                    <div className="bg-white rounded-lg shadow-lg p-8 mt-8">
+                    {/* <div className="bg-white rounded-lg shadow-lg p-8 mt-8">
                         <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
                             Donation Progress
                         </h2>
@@ -420,7 +420,7 @@ export default function Charities() {
                                 </div>
                             </>
                         )}
-                    </div>
+                    </div> */}
                 </div>
             </div>
             <Footer />
