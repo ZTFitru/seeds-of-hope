@@ -6,27 +6,20 @@ import Header from "@/components/Header"
 
 export default function OurTeam() {
 
-    const hosts = [
-        {id: 1, name: 'Host 1', image: '/images/host.png'},
-        {id: 2, name: 'Host 2', image: '/images/host.png'}
+    const partners = [
+        // Row 1: 2 placeholder items
+        {id: 6, logo: '/images/IconOnly_Transparent_NoBuffer.png'},
+        {id: 7, logo: '/images/IconOnly_Transparent_NoBuffer.png'},
+        // Row 2: 3 placeholder items
+        {id: 8, logo: '/images/IconOnly_Transparent_NoBuffer.png'},
+        {id: 9, logo: '/images/IconOnly_Transparent_NoBuffer.png'},
+        {id: 10, logo: '/images/IconOnly_Transparent_NoBuffer.png'},
     ]
 
-    const artists = [
-        {id: 1, name: 'Artist 1', image: '/images/artist.png'},
-        {id: 2, name: 'Artist 2', image: '/images/artist.png'},
-        {id: 3, name: 'Artist 3', image: '/images/artist.png'},
-    ]
-
-    // Group partners into rows with hierarchy: row 0 = 1 item, row 1 = 2 items, row 2 = 3 items, row 3 = 4 items
+    // Group partners into rows with hierarchy: row 1 = 2 items, row 2 = 3 items
     const groupPartnersIntoRows = (partners) => {
         const rows = []
         let index = 0
-        
-        // First row: 1 item
-        if (index < partners.length) {
-            rows.push({ cols: 1, items: partners.slice(index, index + 1) })
-            index += 1
-        }
         
         // Second row: 2 items
         if (index < partners.length) {
@@ -38,18 +31,6 @@ export default function OurTeam() {
         if (index < partners.length) {
             rows.push({ cols: 3, items: partners.slice(index, index + 3) })
             index += 3
-        }
-        
-        // Fourth row: 4 items
-        if (index < partners.length) {
-            rows.push({ cols: 4, items: partners.slice(index, index + 4) })
-            index += 4
-        }
-        
-        // Subsequent rows: 4 items each
-        while (index < partners.length) {
-            rows.push({ cols: 4, items: partners.slice(index, index + 4) })
-            index += 4
         }
         
         return rows
