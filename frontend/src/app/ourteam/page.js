@@ -15,24 +15,6 @@ export default function OurTeam() {
         {id: 1, name: 'Artist 1', image: '/images/artist.png'},
         {id: 2, name: 'Artist 2', image: '/images/artist.png'},
         {id: 3, name: 'Artist 3', image: '/images/artist.png'},
-        {id: 4, name: 'Artist 4', image: '/images/artist.png'},
-    ]
-
-    const partners = [
-        // Row 0: 1 team member
-        {id: 1, logo: '/images/IconOnly_Transparent_NoBuffer.png'},
-        // Row 1: 2 placeholder items
-        {id: 6, logo: '/images/IconOnly_Transparent_NoBuffer.png'},
-        {id: 7, logo: '/images/IconOnly_Transparent_NoBuffer.png'},
-        // Row 2: 3 placeholder items
-        {id: 8, logo: '/images/IconOnly_Transparent_NoBuffer.png'},
-        {id: 9, logo: '/images/IconOnly_Transparent_NoBuffer.png'},
-        {id: 10, logo: '/images/IconOnly_Transparent_NoBuffer.png'},
-        // Row 3: 4 placeholder items
-        {id: 11, logo: '/images/IconOnly_Transparent_NoBuffer.png'},
-        {id: 12, logo: '/images/IconOnly_Transparent_NoBuffer.png'},
-        {id: 13, logo: '/images/IconOnly_Transparent_NoBuffer.png'},
-        {id: 14, logo: '/images/IconOnly_Transparent_NoBuffer.png'},
     ]
 
     // Group partners into rows with hierarchy: row 0 = 1 item, row 1 = 2 items, row 2 = 3 items, row 3 = 4 items
@@ -81,7 +63,7 @@ export default function OurTeam() {
 
             <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 flex-1">
                 <h1 className="text-4xl font-bold text-center text-gray-900 mb-12">
-                    Our Team
+                    Performers
                 </h1>
 
                 {/* host */}
