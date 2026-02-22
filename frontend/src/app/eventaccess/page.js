@@ -18,7 +18,7 @@ export default function EventAcess() {
                 </p>
 
                 {/* event video */}
-                {/* <div className="w-full max-w-2xl aspect-video mb-8">
+                <div className="w-full max-w-2xl aspect-video mb-8">
                     <iframe
                         className="w-full h-full rounded-lg"
                         src="https://www.youtube.com/embed/laFb-ycib34"
@@ -26,7 +26,7 @@ export default function EventAcess() {
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowFullScreen
                     />
-                </div> */}
+                </div>
 
                 {/* <h1 className="text-4xl font-bold text-gray-900 mb-12 text-center">
                     Event Access
