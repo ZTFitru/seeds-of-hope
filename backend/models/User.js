@@ -59,11 +59,28 @@ const User = sequelize.define('User', {
     allowNull: true,
     comment: 'PayPal account identifier after verification'
   },
-  // Account status
+  // Account status & access (locked out when isActive is false)
   isActive: {
     type: DataTypes.BOOLEAN,
-    defaultValue: true,
-    allowNull: false
+    defaultValue: false,
+    allowNull: false,
+    comment: 'When false, user is locked out; set true when admin approves access'
+  },
+  role: {
+    type: DataTypes.ENUM('user', 'admin'),
+    defaultValue: 'user',
+    allowNull: false,
+    comment: 'Admin can approve access and manage users'
+  },
+  accessRequestedAt: {
+    type: DataTypes.DATE,
+    allowNull: true,
+    comment: 'When user requested access to the site (pending approval)'
+  },
+  accessApprovedAt: {
+    type: DataTypes.DATE,
+    allowNull: true,
+    comment: 'When admin approved access (email sent to user)'
   },
   isVerified: {
     type: DataTypes.BOOLEAN,

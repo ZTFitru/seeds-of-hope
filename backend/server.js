@@ -7,6 +7,8 @@ const donationRoutes = require('./routes/donations');
 const ticketRoutes = require('./routes/tickets');
 const ticketOrderRoutes = require('./routes/ticketOrders');
 const paypalWebhookRoutes = require('./routes/paypalWebhook');
+const authRoutes = require('./routes/auth');
+const userRoutes = require('./routes/users');
 const { sequelize, testConnection, syncDatabase } = require('./config/database');
 const models = require('./models');
 
@@ -106,6 +108,14 @@ app.use('/backend/api/ticket-orders', ticketOrderRoutes);
 // PayPal webhook (needs raw body for signature verification)
 app.use('/api/paypal', paypalWebhookRoutes);
 app.use('/backend/api/paypal', paypalWebhookRoutes);
+
+// Auth routes (login, register, forgot/reset password, request access)
+app.use('/api/auth', authRoutes);
+app.use('/backend/api/auth', authRoutes);
+
+// User routes (profile, admin user management)
+app.use('/api/users', userRoutes);
+app.use('/backend/api/users', userRoutes);
 
 // 404 handler
 app.use((req, res) => {

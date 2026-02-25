@@ -6,9 +6,10 @@
  * 2. Creating all tables based on models
  * 3. Setting up relationships
  * 
- * Usage: node scripts/initDatabase.js [--force]
+ * Usage: node scripts/initDatabase.js [--force] [--alter]
  * 
  * --force: Drops all existing tables and recreates them (USE WITH CAUTION)
+ * --alter: Adds new columns to existing tables (safe for new User auth fields, etc.)
  */
 
 require('dotenv').config();
@@ -16,6 +17,7 @@ const { sequelize, testConnection, syncDatabase } = require('../config/database'
 const models = require('../models');
 
 const force = process.argv.includes('--force');
+const alter = process.argv.includes('--alter');
 
 async function initializeDatabase() {
   console.log('Starting database initialization...');
@@ -43,8 +45,11 @@ async function initializeDatabase() {
     if (force) {
       console.log('   (Force mode: Dropping existing tables)');
     }
+    if (alter && !force) {
+      console.log('   (Alter mode: Adding new columns to existing tables)');
+    }
     
-    const synced = await syncDatabase(force);
+    const synced = await syncDatabase(force, alter);
     if (!synced) {
       console.error('Failed to synchronize database.');
       process.exit(1);

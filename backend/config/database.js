@@ -38,10 +38,10 @@ const testConnection = async () => {
   }
 };
 
-// Sync database (create tables if they don't exist)
-const syncDatabase = async (force = false) => {
+// Sync database (create tables if they don't exist; optionally alter to add new columns)
+const syncDatabase = async (force = false, alter = false) => {
   try {
-    await sequelize.sync({ force, alter: false });
+    await sequelize.sync({ force, alter });
     console.log('Database synchronized successfully.');
     return true;
   } catch (error) {
