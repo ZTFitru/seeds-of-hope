@@ -1,10 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const { Op } = require('sequelize');
 const { body, validationResult } = require('express-validator');
 const { User, Donation } = require('../models');
 const { requireAuth, requireActiveUser, requireAdmin } = require('../middleware/auth');
-const { sendAccessApprovedEmail } = require('../services/userEmailService');
+const { sendAccessApprovedEmail, sendAccessDeniedEmail } = require('../services/userEmailService');
 
 const validationErrorHandler = (req, res, next) => {
   const errors = validationResult(req);
@@ -18,7 +17,7 @@ const validationErrorHandler = (req, res, next) => {
 const safeUserFields = [
   'id', 'email', 'firstName', 'lastName', 'phone',
   'emailNotifications', 'eventUpdates', 'isActive', 'isVerified', 'role',
-  'accessRequestedAt', 'accessApprovedAt', 'createdAt', 'updatedAt',
+  'createdAt', 'updatedAt',
 ];
 
 function toSafeUser(user) {
@@ -111,7 +110,7 @@ router.post(
 router.get('/', requireAuth, requireAdmin, async (req, res) => {
   try {
     const pendingOnly = req.query.pending === 'true';
-    const where = pendingOnly ? { isActive: false, accessRequestedAt: { [Op.ne]: null } } : {};
+    const where = pendingOnly ? { role: 'pending' } : {};
     const users = await User.findAll({
       where,
       attributes: safeUserFields,
@@ -151,7 +150,7 @@ const adminUpdateValidation = [
   body('lastName').optional().trim().isLength({ max: 100 }),
   body('email').optional().isEmail().normalizeEmail(),
   body('isActive').optional().isBoolean(),
-  body('role').optional().isIn(['user', 'admin']),
+  body('role').optional().isIn(['pending', 'approved', 'rejected', 'user', 'contributor', 'admin']),
 ];
 router.patch(
   '/:id',
@@ -173,16 +172,18 @@ router.patch(
       const wasInactive = !user.isActive;
       if (isActive !== undefined) updates.isActive = isActive;
 
-      // If approving access (isActive false -> true), set accessApprovedAt and send email
+      // If approving access (isActive false -> true), promote pending to approved and send email
       if (wasInactive && isActive === true) {
-        updates.accessApprovedAt = new Date();
+        if (user.role === 'pending' || user.role === 1) {
+          updates.role = 'approved';
+        }
       }
 
       await user.update(updates);
 
       if (wasInactive && isActive === true) {
         try {
-          await sendAccessApprovedEmail(user.email, user.firstName);
+          await sendAccessApprovedEmail(user.email, user.firstName, 'https://seedsofhope.org');
         } catch (emailErr) {
           console.error('Failed to send access-approved email:', emailErr);
           // Don't fail the request; access was still granted
@@ -202,19 +203,50 @@ router.post('/:id/approve-access', requireAuth, requireAdmin, async (req, res) =
   try {
     const user = await User.findByPk(req.params.id);
     if (!user) return res.status(404).json({ success: false, message: 'User not found' });
-    if (user.isActive) {
+
+    if (user.role === 'rejected') {
+      return res.status(400).json({ success: false, message: 'This user has been rejected and cannot be approved.' });
+    }
+
+    if (user.isActive && (user.role === 'approved' || user.role === 'user' || user.role === 'contributor' || user.role === 'admin')) {
       return res.json({ success: true, message: 'User already has access.', user: toSafeUser(user) });
     }
-    await user.update({ isActive: true, accessApprovedAt: new Date() });
+
+    const updates = { isActive: 1, role: 'approved' };
+    await user.update(updates);
+
     try {
-      await sendAccessApprovedEmail(user.email, user.firstName);
+      await sendAccessApprovedEmail(user.email, user.firstName, 'https://seedsofhope.org');
     } catch (emailErr) {
       console.error('Failed to send access-approved email:', emailErr);
     }
+
     res.json({ success: true, message: 'Access approved and user notified.', user: toSafeUser(user) });
   } catch (err) {
     console.error('Approve access error:', err);
     res.status(500).json({ success: false, message: 'Failed to approve access' });
+  }
+});
+
+// POST /api/users/:id/deny-access — mark as rejected and send email
+router.post('/:id/deny-access', requireAuth, requireAdmin, async (req, res) => {
+  try {
+    const user = await User.findByPk(req.params.id);
+    if (!user) return res.status(404).json({ success: false, message: 'User not found' });
+
+    // Move user to a permanently locked-out state
+    await user.update({ role: 'rejected', isActive: 0 });
+
+    try {
+      await sendAccessDeniedEmail(user.email, user.firstName);
+    } catch (emailErr) {
+      console.error('Failed to send access-denied email:', emailErr);
+    }
+
+    res.json({ success: true, message: 'Access denied and user notified.', user: toSafeUser(user) });
+  } catch (err) {
+    console.error('Deny access error:', err);
+    res.status(500).json({ success: false, message: 'Failed to deny access' });
   }
 });
 

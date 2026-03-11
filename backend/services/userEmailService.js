@@ -42,7 +42,7 @@ async function sendPasswordResetEmail(to, resetToken, firstName = '') {
  * @param {string} loginUrl - Optional login page URL
  */
 async function sendAccessApprovedEmail(to, firstName = '', loginUrl = null) {
-  const url = loginUrl || `${FRONTEND_URL}/login`;
+  const url = loginUrl || 'https://seedsofhope.org';
   const greeting = firstName ? `Hi ${firstName},` : 'Hi,';
   const html = `
     <!DOCTYPE html>
@@ -64,7 +64,37 @@ async function sendAccessApprovedEmail(to, firstName = '', loginUrl = null) {
   });
 }
 
+/**
+ * Send email when an admin has denied the user's access request.
+ * @param {string} to - User email
+ * @param {string} firstName - User first name
+ */
+async function sendAccessDeniedEmail(to, firstName = '') {
+  const siteUrl = 'https://seedsofhope.org';
+  const greeting = firstName ? `Hi ${firstName},` : 'Hi,';
+  const html = `
+    <!DOCTYPE html>
+    <html>
+    <head><meta charset="utf-8"><title>Access request denied</title></head>
+    <body style="font-family: sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
+      <h2>Your access request has been reviewed</h2>
+      <p>${greeting}</p>
+      <p>After reviewing your request, an administrator has decided not to approve access to ${APP_NAME} at this time.</p>
+      <p>If you believe this decision was made in error or you have additional questions, please reach out through our website.</p>
+      <p><a href="${siteUrl}" style="display: inline-block; padding: 12px 24px; background: #2563eb; color: #fff; text-decoration: none; border-radius: 6px;">Visit ${APP_NAME}</a></p>
+      <p>— The ${APP_NAME} Team</p>
+    </body>
+    </html>
+  `;
+  await sendEmail({
+    to,
+    subject: `Your ${APP_NAME} access request`,
+    html,
+  });
+}
+
 module.exports = {
   sendPasswordResetEmail,
   sendAccessApprovedEmail,
+  sendAccessDeniedEmail,
 };

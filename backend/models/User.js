@@ -67,20 +67,10 @@ const User = sequelize.define('User', {
     comment: 'When false, user is locked out; set true when admin approves access'
   },
   role: {
-    type: DataTypes.ENUM('user', 'admin'),
-    defaultValue: 'user',
+    type: DataTypes.ENUM('pending', 'approved', 'rejected', 'user', 'contributor', 'admin'),
+    defaultValue: 'pending',
     allowNull: false,
-    comment: 'Admin can approve access and manage users'
-  },
-  accessRequestedAt: {
-    type: DataTypes.DATE,
-    allowNull: true,
-    comment: 'When user requested access to the site (pending approval)'
-  },
-  accessApprovedAt: {
-    type: DataTypes.DATE,
-    allowNull: true,
-    comment: 'When admin approved access (email sent to user)'
+    comment: 'pending = new account; approved = access granted; rejected = permanently denied; contributor/user = standard access; admin = full access'
   },
   isVerified: {
     type: DataTypes.BOOLEAN,

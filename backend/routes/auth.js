@@ -41,7 +41,7 @@ router.post(
         lastName,
         phone: phone || null,
         isActive: false,
-        accessRequestedAt: new Date(),
+        role: 'pending',
       });
       const token = signToken(user);
       res.status(201).json({
@@ -173,7 +173,7 @@ router.post(
   }
 );
 
-// Request access (for existing locked-out users; sets accessRequestedAt if not set)
+// Request access (for existing locked-out users; acknowledges request)
 router.post(
   '/request-access',
   requireAuth,
@@ -183,9 +183,6 @@ router.post(
       if (!user) return res.status(404).json({ success: false, message: 'User not found' });
       if (user.isActive) {
         return res.json({ success: true, message: 'Your account already has access.' });
-      }
-      if (!user.accessRequestedAt) {
-        await user.update({ accessRequestedAt: new Date() });
       }
       res.json({ success: true, message: 'Your access request is on file. An administrator will review it.' });
     } catch (err) {

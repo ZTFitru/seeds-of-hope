@@ -37,7 +37,19 @@ function requireAuth(req, res, next) {
 }
 
 /**
- * Middleware: require auth and that the user is active (not locked out).
+ * Whether the role is allowed past the lock (not pending).
+ * Accepts strings: 'approved', 'user', 'contributor', 'admin'; or integer 2 for contributor.
+ * Pending/rejected (or integer 1) is not allowed.
+ */
+function isContributorOrAdmin(role) {
+  if (role === 'approved' || role === 'user' || role === 'contributor' || role === 'admin') return true;
+  if (typeof role === 'number' && role === 2) return true; // contributor by integer
+  return false;
+}
+
+/**
+ * Middleware: require auth, active account, and role that is allowed past the lock.
+ * Pending users (role 'pending' or 1) are locked out; user/contributor/admin (or 2) can access when isActive.
  */
 async function requireActiveUser(req, res, next) {
   if (!req.user) return res.status(401).json({ success: false, message: 'Authentication required' });
@@ -45,6 +57,12 @@ async function requireActiveUser(req, res, next) {
     const user = await User.findByPk(req.user.id, { attributes: ['id', 'isActive', 'role'] });
     if (!user) return res.status(401).json({ success: false, message: 'User not found' });
     if (!user.isActive) {
+      return res.status(403).json({
+        success: false,
+        message: 'Your account is not approved for access. Please contact an administrator.',
+      });
+    }
+    if (!isContributorOrAdmin(user.role)) {
       return res.status(403).json({
         success: false,
         message: 'Your account is not approved for access. Please contact an administrator.',
@@ -73,6 +91,7 @@ module.exports = {
   requireAuth,
   requireActiveUser,
   requireAdmin,
+  isContributorOrAdmin,
   JWT_SECRET,
   JWT_EXPIRES_IN,
 };

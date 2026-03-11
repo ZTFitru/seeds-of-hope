@@ -141,6 +141,25 @@ Stores donation information with support for anonymous donations and payment pro
 **Relationships:**
 - Many-to-One with `users` (Optional - donation can be linked to user account)
 
+## Local development against the live database
+
+To run the **local backend** against the **live database** (tables already exist):
+
+1. **Use the live DB in `.env`**  
+   Set `DB_HOST`, `DB_NAME`, `DB_USER`, and `DB_PASSWORD` to the live values (as in the example below). No code changes are required; the app reads these from the environment.
+
+2. **Whitelist your IP on the database server**  
+   The live host (e.g. `amelia.ducimus.digital`) will only accept connections from allowed IPs.
+   - **Private (LAN) IP** (e.g. `10.0.0.x`): visible on your local network; use `ipconfig` (Windows) or `ifconfig` / `ip addr` (Mac/Linux) to see it. Some hosts allow this if you’re on a VPN that presents it.
+   - **Public IP**: what the database server usually sees when you connect from home/office. Add this to the server’s “allowed hosts” or firewall.
+   - To find your **public IP**: open [https://whatismyip.com](https://whatismyip.com) or run:
+     ```bash
+     curl -s https://api.ipify.org
+     ```
+
+3. **Avoid altering the live schema**  
+   Do **not** set `DB_AUTO_SYNC=true` and do **not** run `npm run db:init -- --force` when connected to the live DB, so you don’t drop or change existing tables.
+
 ## Environment Variables
 
 Make sure your `.env` file in the `backend` directory contains:

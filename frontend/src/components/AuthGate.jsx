@@ -14,6 +14,9 @@ function isPublicPath(pathname) {
   if (pathname === '/reset-password') return true;
   if (pathname === '/donation/success') return true;
   if (pathname === '/donation/cancel') return true;
+  // Admin login and admin panel handle their own gating.
+  if (pathname === '/admin-login') return true;
+  if (pathname === '/admin') return true;
   return false;
 }
 
@@ -75,6 +78,7 @@ export default function AuthGate({ children }) {
         firstName: registerForm.firstName.trim(),
         lastName: registerForm.lastName.trim(),
         phone: registerForm.phone.trim() || undefined,
+        role: 'pending',
       };
       const result = await register(payload);
       setMessage(result.message);
@@ -100,7 +104,7 @@ export default function AuthGate({ children }) {
       {children}
 
       {shouldShowModal && (
-        <div className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/70">
+        <div className="fixed inset-0 z-[1000] flex items-center justify-center bg-black">
           <div className="w-full max-w-md mx-4 bg-white rounded-xl shadow-2xl p-6 relative text-black">
             <div className="mb-4 text-center">
               <h2 className="text-2xl font-bold mb-1">Restricted Access</h2>
