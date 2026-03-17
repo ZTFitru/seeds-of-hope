@@ -36,14 +36,44 @@ export default function AuthGate({ children }) {
   const [forgotEmail, setForgotEmail] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [message, setMessage] = useState(null);
+  const [forcedOpen, setForcedOpen] = useState(false);
 
-  const shouldShowModal = useMemo(() => {
-    if (initializing) return false;
-    if (isPublicPath(pathname)) return false;
-    // Only show when there is no logged-in (and already-approved) user.
-    // If you later want to enforce isActive here, fetch it from /me in AuthContext.
+  // Allow other components (e.g., the header) to request opening the auth modal.
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const handleOpen = () => {
+      setView('login');
+      setForcedOpen(true);
+    };
+
+    window.addEventListener('auth:open', handleOpen);
+
+    return () => {
+      window.removeEventListener('auth:open', handleOpen);
+    };
+  }, []);
+
+  const isPublic = useMemo(() => isPublicPath(pathname), [pathname]);
+
+  // On non-public routes, block rendering of protected content until we know
+  // whether there is a logged-in user. Public routes always render normally.
+  const shouldBlockContent = useMemo(() => {
+    if (isPublic) return false;
+    if (initializing) return true;
+    // Only allow inside content to render once there is a logged-in user.
+    // Server-side middleware still enforces isActive/role for real security.
     return !user;
-  }, [initializing, pathname, user]);
+  }, [isPublic, initializing, user]);
+
+  // If a user logs in successfully, close any forced-open modal.
+  useEffect(() => {
+    if (user && forcedOpen) {
+      setForcedOpen(false);
+    }
+  }, [user, forcedOpen]);
+
+  const showModal = shouldBlockContent || forcedOpen;
 
   // Reset messages when switching view
   useEffect(() => {
@@ -101,9 +131,9 @@ export default function AuthGate({ children }) {
 
   return (
     <>
-      {children}
+      {!shouldBlockContent && children}
 
-      {shouldShowModal && (
+      {showModal && (
         <div className="fixed inset-0 z-[1000] flex items-center justify-center bg-black">
           <div className="w-full max-w-md mx-4 bg-white rounded-xl shadow-2xl p-6 relative text-black">
             <div className="mb-4 text-center">

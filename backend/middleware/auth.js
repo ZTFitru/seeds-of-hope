@@ -37,12 +37,13 @@ function requireAuth(req, res, next) {
 }
 
 /**
- * Whether the role is allowed past the lock (not pending).
- * Accepts strings: 'approved', 'user', 'contributor', 'admin'; or integer 2 for contributor.
+ * Whether the role is allowed past the lock to view inside pages.
+ * Allowed: 'approved', 'user', 'contributor', 'admin'; or integer 2 for contributor.
  * Pending/rejected (or integer 1) is not allowed.
  */
+const ROLES_ALLOWED_INSIDE_PAGES = ['approved', 'user', 'contributor', 'admin'];
 function isContributorOrAdmin(role) {
-  if (role === 'approved' || role === 'user' || role === 'contributor' || role === 'admin') return true;
+  if (ROLES_ALLOWED_INSIDE_PAGES.includes(role)) return true;
   if (typeof role === 'number' && role === 2) return true; // contributor by integer
   return false;
 }
