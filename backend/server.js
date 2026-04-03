@@ -41,7 +41,7 @@ const app = express();
 // CORS configuration - supports both development and production
 const allowedOrigins = process.env.FRONTEND_URL 
   ? process.env.FRONTEND_URL.split(',').map(url => url.trim())
-  : ['http://localhost:3000',"https://seedsofhopesc.org","https://test1.seedsofhopesc.org"];
+  : ['http://localhost:3000'];
 
 app.use(cors({
   origin: (origin, callback) => {

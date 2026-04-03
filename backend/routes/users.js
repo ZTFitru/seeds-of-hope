@@ -183,7 +183,7 @@ router.patch(
 
       if (wasInactive && isActive === true) {
         try {
-          await sendAccessApprovedEmail(user.email, user.firstName, 'https://seedsofhope.org');
+          await sendAccessApprovedEmail(user.email, user.firstName, 'https://seedsofhopesc.org');
         } catch (emailErr) {
           console.error('Failed to send access-approved email:', emailErr);
           // Don't fail the request; access was still granted
@@ -216,7 +216,7 @@ router.post('/:id/approve-access', requireAuth, requireAdmin, async (req, res) =
     await user.update(updates);
 
     try {
-      await sendAccessApprovedEmail(user.email, user.firstName, 'https://seedsofhope.org');
+      await sendAccessApprovedEmail(user.email, user.firstName, 'https://seedsofhopesc.org');
     } catch (emailErr) {
       console.error('Failed to send access-approved email:', emailErr);
     }

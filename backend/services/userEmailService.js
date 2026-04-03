@@ -42,7 +42,7 @@ async function sendPasswordResetEmail(to, resetToken, firstName = '') {
  * @param {string} loginUrl - Optional login page URL
  */
 async function sendAccessApprovedEmail(to, firstName = '', loginUrl = null) {
-  const url = loginUrl || 'https://seedsofhope.org';
+  const url = loginUrl || 'https://seedsofhopesc.org';
   const greeting = firstName ? `Hi ${firstName},` : 'Hi,';
   const html = `
     <!DOCTYPE html>
@@ -70,7 +70,7 @@ async function sendAccessApprovedEmail(to, firstName = '', loginUrl = null) {
  * @param {string} firstName - User first name
  */
 async function sendAccessDeniedEmail(to, firstName = '') {
-  const siteUrl = 'https://seedsofhope.org';
+  const siteUrl = 'https://seedsofhopesc.org';
   const greeting = firstName ? `Hi ${firstName},` : 'Hi,';
   const html = `
     <!DOCTYPE html>
